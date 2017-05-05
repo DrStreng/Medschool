@@ -1,0 +1,151 @@
+body {
+    overflow:hidden;
+    /*background-color: #ebf0ff;*/
+}
+
+ /*.content > .container-fluid{
+    padding-top:50px;
+}*/
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #a5def3;
+  color:black;
+}
+.alert-top {
+    margin-top: 2em;
+}
+.table-width > tbody > tr > th {
+    width:200px;
+    vertical-align: inherit;
+}
+.table-details >tbody> tr > td, .table-details > tbody > tr > th  {
+    padding:15px;
+}
+
+.glyph-icon-custom {
+    font-size: 1.5em;
+    padding:5px;
+}
+.glyph-icon-custom-details {
+    color:#2196F3;
+}
+.glyph-icon-custom-edit {
+    color:#009688;
+}
+
+a{
+    color:white;
+}
+.nav {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.glyphicon-pad {
+    padding: 2px 10px 2px 2px;
+}
+.glyphicon-pad2 {
+    padding: 0px 10px 0px 0px;
+}
+.tab-actions{
+    width:140px;
+    text-align: center;
+}
+.tab-checkbox {
+    width:30px;
+    text-align: center; 
+}
+
+
+
+/*.inverse {
+    background-color: black;
+    color:white;
+    border: none; 
+}
+.inverse > thead{
+ 
+    border: none; 
+}*/
+
+
+.btn-pad {
+    width:200px;
+}
+
+.main {
+  padding-top:50px;  
+}
+ h2 {
+     padding-bottom: 20px;
+ }
+ h2 > .glyphicon {
+     padding: 0px 15px 0px 0px;
+ }
+
+.menu {
+  padding-top:0px;  
+}
+.col-search {
+    padding-left:0px;  
+}
+
+.myscroll {
+    overflow:auto;
+    height:700px;
+}
+
+.z {
+    position: absolute;
+    z-index: -1;
+}
+.logo {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    padding: 15% 50px;
+}
+.btn-custom-add {
+    text-align:center;
+     /*margin-top:15px;*/
+}
+
+.test{
+    width:400px;
+}
+
+
+.navbar-custom {
+    background-color: #1C2331;
+    background-image: url(../img/a.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+.navbar-custom2 {
+    /*background-color: #293a48;*/
+    background: linear-gradient(to right, #293a48 ,#293a48,#293a48,#293a48, #3687b2,#293a48);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /**/
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #fff;
+}
+
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<div class="container-fluid">
+
+        <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
+            <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
+            <strong>Info!</strong> {{message.text}}
+        </div>
+        
+    <div ng-init="getPersonByParams()">
+        <h3><strong>Edycja: {{aaa.nazwisko}} {{aaa.imie}}</strong></h3>
+        </br>
+        <div class="row">
+            <form name ="edit-person-form" ng-submit="editPersonForm(edit-person-form)" novalidate angular-validator>
+                <div class="col-md-10">
+
+                    
+                    <table class="table table-width">
+                        <tr>
+                            <th>Imię: </th>
+                            <td><input type="text" class="form-control" ng-model ="form.imie" value="{{form.imie}}" ></td>
+                        </tr>
+                        <tr>
+                            <th>Nazwisko: </th>
+                            <td><input type="text" class="form-control" ng-model ="form.nazwisko" value="{{form.nazwisko}}"></td>
+                        </tr>
+                        <tr>
+                            <th>Data urodzenia: </th>
+                            <td><input type="date" class="form-control" ng-model ="form.data_ur" value="{{form.data_ur }}" format-date></td>
+                        </tr>
+                        <tr>
+                            <th>PESEL: </th>
+                            <td><input type="text" class="form-control" ng-model ="form.pesel"  value="{{form.pesel}}" ></td>
+                        </tr>
+                        <tr>
+                            <th>Szkoła: </th>
+                            <td>{{aaa.szkola.nazwa}}</td>
+                        </tr>
+                        <tr>
+                            <th>Klasa: </th>
+                            <td>{{aaa.nr_klasy.nazwa}}</td>
+                        </tr>
+                        <tr>
+                            <th>Szczegóły: </th>
+                            <td><textarea  class="form-control" rows="4" ng-model ="form.details"  value="{{form.details}}" /></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-md-2"></br>
+                        <button type="submit"  class="btn btn-primary btn-block"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> ZAPISZ ZMIANY</button>
+                </div>
+
+            </form>
+
+            <div class="col-md-2"></br>
+                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING</button>
+                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING ELSE</button>
+                <button type="submit"  class="btn btn-warning btn-block">PRZYWRÓĆ ZMIANY</button>
+                
+                </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+            </div>
+
+        </div>
+    </div>
+</div>

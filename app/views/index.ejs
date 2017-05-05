@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>
+        suppApp
+    </title>
+
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/angular/angular.js" type="text/javascript"></script>
+    <script src="libs/angular-route/angular-route.js"type="text/javascript"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--<script src="libs/pdfFromHTML.js"></script>-->
+    <script src="libs/pdfmake/build/pdfmake.min.js"></script>
+    <script src="libs/pdfmake/build/vfs_fonts.js"></script>
+
+    <script src="js/app.routes.js"></script>
+    <script src="js/PersonCtrl.js"></script>
+    <script src="js/SearchCtrl.js"></script>
+    <script src="js/SchoolCtrl.js"></script>
+    <script src="js/ClassCtrl.js"></script>
+
+    <link href="libs/bootstrap-side-navbar/source/assets/stylesheets/navbar-fixed-side.css" rel="stylesheet" />
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="libs/happy-little-checkboxes/css/style.css">
+    
+    <!--<base href="/">-->
+
+</head>
+
+<body>
+    
+    
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3 col-lg-2 ">
+                        <nav class="navbar navbar-custom navbar-fixed-side menu">
+                            <!-- normal collapsible navbar markup -->
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <div class="navbar-header">
+                                        <a class="" href="/">
+                                            <img src="img/Fullmetal_Alchemist_Anime_Logo.svg.png" class="logo"/> 
+                                        </a>
+                                    </div>
+                                <ul class="nav navbar-nav">
+                                    
+                                        <li><a href="/"><span class="glyphicon glyphicon-pad glyphicon-home" aria-hidden="true"></span>Główna</a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-cloud" aria-hidden="true"></span>Link</a></li>
+                                        <li><a href="#!/Person"><span class="glyphicon glyphicon-pad glyphicon-list" aria-hidden="true"></span>Uczniowie</a></li>
+                                        <li><a href="#!/Schools"><span class="glyphicon glyphicon-pad glyphicon-leaf" aria-hidden="true"></span>Szkoły</a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-tasks" aria-hidden="true"></span>Link</a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-send" aria-hidden="true"></span>Link</a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-print" aria-hidden="true"></span>Link</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-sm-9 col-lg-10">
+                        <div ng-include src="'partials/header.html'"></div>
+                        <div class="main">
+                            <div ng-view></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+</body>
+
+</html>

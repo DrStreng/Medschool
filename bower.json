@@ -1,0 +1,11 @@
+{
+  "name": "suppApp",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "angular": "1.4.6"
+  },
+  "devDependencies": {
+    "jquery": "1.x"
+  }
+}

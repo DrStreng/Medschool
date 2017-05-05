@@ -1,0 +1,76 @@
+
+    <div ng-controller="PersonCtrl" class="container-fluid">
+
+
+        <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
+            <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
+            <strong>Info!</strong> {{message.text}}
+        </div>
+
+        <div class="col-md-6 myscroll">
+
+            <h2>Dodawanie uczniów</h2>
+
+            <form name="add_person_form" ng-submit="submitForm(add_person_form.$valid)" novalidate angular-validator>
+
+                <div class="form-group has-feedback" ng-class="{'has-error' : add_person_form.firstname.$invalid && !add_person_form.firstname.$pristine}">
+                    <label for="firstname" class="control-label">Imię</label>
+                    <input type="text" class="form-control" name="firstname" ng-model="person.imie" placeholder="Imię" required>
+                    <span ng-show="add_person_form.firstname.$invalid && !add_person_form.firstname.$pristine" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback" ng-class="{'has-error' : add_person_form.lastname.$invalid && !add_person_form.lastname.$pristine}">
+                    <label for="lastname" class="control-label">Nazwisko</label>
+                    <input type="text" class="form-control" name="lastname" ng-model="person.nazwisko" placeholder="Nazwisko" required>
+                    <span ng-show="add_person_form.lastname.$invalid && !add_person_form.lastname.$pristine" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <!--<p  class="help-block">Nazwisko jest wymagane</p>-->
+                </div>
+
+                <div class="form-group">
+                    <label for="data_ur" class="control-label">Data urodzenia</label>
+                    <input type="date" id="data_ur" class="form-control" ng-model="person.data_ur" placeholder="data_ur">
+                </div>
+
+                <div class="form-group" >
+                    <label for="pesel" class="control-label">Pesel</label>
+                    <input type="text" class="form-control" name="pesel" ng-model="person.pesel" placeholder="pesel" >
+                </div>
+
+                <div class="form-group" ng-class="{'has-error' : add_person_form.szkola.$invalid && !add_person_form.szkola.$pristine}">
+                    <label for="szkola">Szkoła</label>
+                    <select class="form-control"  name="szkola"
+                            ng-init="person.szkola=person.szkola||schools[0]._id"  
+                            ng-model="person.szkola" 
+                            ng-options="option.nazwa for option in schools" 
+                            ng-change="schoolSelect()">
+                    </select>
+                
+                </div>
+               
+                <div class="form-group">
+                    <label for="nr_klasy">Klasa</label>
+                    <select class="form-control"  name="nr_klasy"
+                            ng-init="person.nr_klasy=person.nr_klasy||schoolClass[0]._id"
+                            ng-model="person.nr_klasy" 
+                            ng-options="option.nazwa for option in schoolClass" required>
+                    </select>
+                    
+                </div>
+                  
+                   
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" ng-disabled="add_person_form.$invalid">Dodaj</button>
+                    <button type="submit" class="btn btn-warning" ng-click="clear()">Wyczyść</button>
+                </div>
+            </form>
+        </div>
+        
+        <div ng-include src="'partials/lastAdd.html'"></div>
+        
+    </div>
+     </div>
+
+     
+    
+
+

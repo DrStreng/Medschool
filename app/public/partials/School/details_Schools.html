@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div ng-init="getSchool()">
+        <h3>Szkoła: {{aaa.nazwa}}</h3>
+        </br>
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table">
+                    <tr>
+                        <th>Pełna nazwa: {{aaa.fullname}}</th>
+                        <td><span>{{aaa.fullname}}</span></td>
+                    </tr>
+                    <tr>
+                        <th>Klasy: </th>
+                        <td><span ng-repeat="opt in aaa.klasa">{{opt.nazwa}},  </span></td>
+                    </tr>
+                </table>
+                </br>
+                
+                
+            </div>
+            <div class="col-md-2"></br>
+                <button type="submit"  class="btn btn-primary btn-block">Do SOMETHING</button>
+                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING DIFRENT </button>
+                <button type="submit"  class="btn btn-info btn-block"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> LISTA SZKOLNA</button>
+                <button type="submit"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  EDYTUJ</button>
+
+                </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+            </div>
+        </div>
+    </div>
+</div>

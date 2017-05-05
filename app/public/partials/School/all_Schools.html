@@ -1,0 +1,77 @@
+
+<h2><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span><strong>Szkoły</strong></h2>
+       
+<div class="container-fluid">
+    <div class="row ">
+
+    <div class="col-search col-md-5">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control " ng-model="searchText" placeholder="Search for...">
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+        <select class="form-control" id="sel1">
+          <option>10</option>
+          <option>20</option>
+          <option>50</option>
+          <option>All</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-2 navbar-right">
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary "><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Wyszukiwanie zaawansowane</a></li>
+            <li><a href="#!/addSchoolandClass"><span class="glyphicon glyphicon-pad glyphicon-plus" aria-hidden="true"></span>Dodaj Szkoły i Klasy</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
+        
+    </div>
+
+  </div>
+</div>
+    
+            <div class="table-responsive myscroll">
+              <table class="table table-striped table-hover ">
+                <thead>
+                    <tr ng-style=" {'background-color': '#272b46','color':'white'}">
+                      <th>#</th>
+                      <th>Nazwa</th>
+                      <th class="tab-actions">Akcje</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="a in schools | filter:searchText" 
+                        ng-style="a.isClass === true && {'background-color': '#c2e6ff'} ||
+                                  a.isSelected === true && {'background-color': '#3a9cff','color':'white'}">
+                        <td ng-style="{'width':'20px'}"><div ng-bind-html = "chkbox(a)"></div></td>
+                        <!--<input type="checkbox"></input>-->
+                        <td ng-click="showSchoolClass(a,$index)">{{a.nazwa}}</td>
+                        <td class="tab-actions">
+                          <a href="{{link(a)}}"  class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                          <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                        </td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+
+

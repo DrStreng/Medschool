@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div ng-init="getPersonByParams()">
+        <h3><strong>{{aaa.nazwisko}} {{aaa.imie}}</strong></h3>
+        </br>
+        <div class="row">
+            <div class="col-md-10" id="HTMLtoPDF">
+                <table class="table table-width table-details" >
+                    <tr>
+                        <th>Imię: </th>
+                        <td><span>{{aaa.imie}}</span></td>
+                    </tr>
+                    <tr>
+                        <th>Nazwisko: </th>
+                        <td>{{aaa.nazwisko}}</td>
+                    </tr>
+                    <tr>
+                        <th>Data urodzenia: </th>
+                        <td>{{aaa.data_ur | date:'dd-MM-yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <th>PESEL: </th>
+                        <td>{{aaa.pesel}}</td>
+                    </tr>
+                    <tr>
+                        <th>Szkoła: </th>
+                        <td>{{aaa.szkola.nazwa}}</td>
+                    </tr>
+                    <tr>
+                        <th>Klasa: </th>
+                        <td>{{aaa.nr_klasy.nazwa}}</td>
+                    </tr>
+                    <tr>
+                        <th>Szczegóły: </th>
+                        <td>{{aaa.details}}</td>
+                    </tr>
+                </table>
+                </br>
+                
+            </div>
+            <div class="col-md-2"></br>
+                <button type="submit"  class="btn btn-primary btn-block">Do SOMETHING</button>
+                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING DIFRENT </button>
+                <button type="submit" ng-click="createPersonDetailsPDF(aaa)" class="btn btn-info btn-block"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> DRUKUJ </button>
+                <a href="{{link_edit2()}}"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  EDYTUJ</a>
+
+                </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+            </div>
+        </div>
+    </div>
+</div>
