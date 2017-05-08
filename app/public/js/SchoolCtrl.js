@@ -2,6 +2,9 @@
     
     app.controller('SchoolCtrl', function($scope,$http,$routeParams,$sce) {
 
+         $scope.sortType = "nazwa"; 
+         $scope.sortReverse = false;
+
         var referesh = function(){
             $http.get('/schools/all').then(function(res){
                     $scope.schools = res.data;
@@ -28,6 +31,7 @@
         }
 
         $scope.showSchoolClass = function(a){
+            $scope.SelectedSchool = a;
             $scope.listClass = a.klasa;
         }
         

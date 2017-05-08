@@ -16,7 +16,7 @@
 
     <script src="js/app.routes.js"></script>
     <script src="js/PersonCtrl.js"></script>
-    <script src="js/SearchCtrl.js"></script>
+    <script src="js/MenuCtrl.js"></script>
     <script src="js/SchoolCtrl.js"></script>
     <script src="js/ClassCtrl.js"></script>
 
@@ -33,36 +33,33 @@
 
 <body>
     
-    
         <div class="content">
             <div class="container-fluid">
                
-                    
-                    <div class="z2">
-                        <nav class="navbar navbar-custom navbar-fixed-side menu">
+                    <div class="z2"  >
+                        <nav class="navbar navbar-custom navbar-fixed-side menu ">
                             <!-- normal collapsible navbar markup -->
-                            <div id="navbar" class="navbar-collapse collapse">
+                            <div id="navbar" class="navbar-collapse collapse" ng-controller="MenuCtrl">
                                 <div class="navbar-header">
                                         <a class="" href="/">
                                             <img src="img/Fullmetal_Alchemist_Anime_Logo.svg.png" class="logo"/> 
                                         </a>
                                     </div>
                                 <ul class="nav navbar-nav">
-                                    
-                                        <li><a href="/"><span class="glyphicon glyphicon-pad glyphicon-home" aria-hidden="true"></span>Główna</a></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-cloud" aria-hidden="true"></span>Link</a></li>
-                                        <li><a href="#!/Person"><span class="glyphicon glyphicon-pad glyphicon-list" aria-hidden="true"></span>Uczniowie</a></li>
-                                        <li><a href="#!/Schools"><span class="glyphicon glyphicon-pad glyphicon-leaf" aria-hidden="true"></span>Szkoły</a></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-tasks" aria-hidden="true"></span>Link</a></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-send" aria-hidden="true"></span>Link</a></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-print" aria-hidden="true"></span>Link</a></li>
+                                        <li ng-class="{ active: isActive('/') }"><a  href="/"><span class="glyphicon glyphicon-pad glyphicon-home" aria-hidden="true"></span>Główna</a></li>
+                                        <li ng-class="{ active: isActive('/') }"><a  href="#"><span class="glyphicon glyphicon-pad glyphicon-cloud" aria-hidden="true"></span>Link</a></li>
+                                        <li ng-class="{ active: isActive('/Person') }"><a  href="#!/Person"><span class="glyphicon glyphicon-pad glyphicon-list" aria-hidden="true"></span>Uczniowie</a></li>
+                                        <li ng-class="{ active: isActive('/Schools') }"><a  href="#!/Schools"><span class="glyphicon glyphicon-pad glyphicon-leaf" aria-hidden="true"></span>Szkoły</a></li>
+                                        <li ng-class="{ active: isActive('/') }"><a  href="#"><span class="glyphicon glyphicon-pad glyphicon-tasks" aria-hidden="true"></span>Link</a></li>
+                                        <li ng-class="{ active: isActive('/') }"><a  href="#"><span class="glyphicon glyphicon-pad glyphicon-send" aria-hidden="true"></span>Link</a></li>
+                                        <li ng-class="{ active: isActive('/') }"><a  href="#"><span class="glyphicon glyphicon-pad glyphicon-print" aria-hidden="true"></span>Link</a></li>
                                 </ul>
                             </div>
                         </nav>
                     </div>
                      
-                        <nav class="z3 navbar navbar-custom2 navbar-custom-head navbar-fixed-top "></nav>
-                  
+                    <nav class="z3 navbar navbar-custom2 navbar-custom-head navbar-fixed-top "></nav>
+    
                     <div class="z">
                         <div class="main">
                             <div ng-view></div>
@@ -71,8 +68,6 @@
                 </div>
             </div>
        
-        
-
 </body>
 
 </html>

@@ -7,6 +7,13 @@ body {
     padding-top:50px;
 }*/
 
+ .active { 
+    background-color: #1ba3d6;
+    border-radius: 3px; 
+    
+}
+
+
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #a0ddf3;
   color:black;
@@ -75,14 +82,17 @@ a{
 .btn-pad {
     width:200px;
 }
+.select-action{
+    padding-top: 23px;
+}
 
 .main {
   padding-top:70px;  
 }
- h2 {
+ h3 {
      padding-bottom: 20px;
  }
- h2 > .glyphicon {
+ h3 > .glyphicon {
      padding: 0px 15px 0px 0px;
  }
 
