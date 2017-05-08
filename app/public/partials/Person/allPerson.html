@@ -1,21 +1,12 @@
 
-            
-            
+<div ng-include src="'partials/search.html'"></div>
 
 <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span><strong>Uczniowie</strong></h2>
 
 <div class="container-fluid">
     <div class="row ">
 
-    <div class="col-search col-md-5">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control " ng-model="searchText" placeholder="Search for...">
-        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-      </div>
-    </div>
-
-
-    <div class="col-sm-1">
+    <!--<div class="col-sm-1">
       <div class="form-group">
         <select class="form-control" id="sel1">
           <option>10</option>
@@ -24,14 +15,13 @@
           <option>All</option>
         </select>
       </div>
-    </div>
-
+    </div>-->
 
     <div class="col-md-2 navbar-right">
 
         <div class="btn-group">
-          <button type="button" class="btn btn-primary "><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn btn-custom"><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
+          <button type="button"  class="btn dropdown-toggle btn-custom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
           </button>
@@ -55,9 +45,9 @@
   <div class="table-responsive myscroll">
     <table class="table table-hover  ">
       <thead>
-          <tr ng-style=" {'background-color': '#272b46','color':'white'}">
+          <tr ng-style=" {'background-color': '#36363a','color':'white'}">
             <th style="width: 10px">#</th>
-            <th></th>
+            <th style="width: 30px"></th>
             <th ng-click="sortType = 'imie'; sortReverse = !sortReverse">Imię    
                     <span ng-show="sortType != 'imie'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
                     <span ng-show="sortType == 'imie' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
@@ -106,7 +96,6 @@
             <td>{{a.nazwisko}}</td>
             <td>{{a.pesel}}</td>
             <td>{{a.data_ur | date:'yyyy-MM-dd'}}</td>
-            <!--| date:'dd-MM-yyyy'-->
             <td>{{a.nr_klasy.nazwa}}</td>
             <td>{{a.szkola.nazwa}}</td>
             <td class="tab-actions">

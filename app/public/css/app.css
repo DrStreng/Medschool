@@ -8,7 +8,7 @@ body {
 }*/
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #a5def3;
+  background-color: #a0ddf3;
   color:black;
 }
 .alert-top {
@@ -23,14 +23,30 @@ body {
 }
 
 .glyph-icon-custom {
-    font-size: 1.5em;
+    font-size: 1.35em;
     padding:5px;
 }
 .glyph-icon-custom-details {
-    color:#2196F3;
+    color:#33b5e5;
 }
 .glyph-icon-custom-edit {
-    color:#009688;
+    color:#00b700;
+}
+.btn-custom {
+    background-color: #33b5e5;
+    color:white;
+}
+.btn-custom:hover {
+    background-color: #1ba3d6;
+    color:white;
+}
+.btn-custom:active {
+    background-color: #1ba3d6;
+    color:white;
+}
+.btn-custom:focus {
+    background-color: #1ba3d6;
+    color:white;
 }
 
 a{
@@ -56,25 +72,12 @@ a{
     text-align: center; 
 }
 
-
-
-/*.inverse {
-    background-color: black;
-    color:white;
-    border: none; 
-}
-.inverse > thead{
- 
-    border: none; 
-}*/
-
-
 .btn-pad {
     width:200px;
 }
 
 .main {
-  padding-top:50px;  
+  padding-top:70px;  
 }
  h2 {
      padding-bottom: 20px;
@@ -96,9 +99,23 @@ a{
 }
 
 .z {
-    position: absolute;
-    z-index: -1;
+    padding-left: 250px;
+    z-index: 1;
 }
+.z3 {
+    position: absolute;
+    z-index: 2;
+}
+
+.z2 {
+    position: absolute;
+    z-index: 20;
+}
+.z4 {
+    position: absolute;
+    z-index: 4;
+}
+
 .logo {
     max-width: 100%;
     display: block;
@@ -116,19 +133,23 @@ a{
 
 
 .navbar-custom {
-    background-color: #1C2331;
+    background-color: #272528;
     background-image: url(../img/a.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 
 }
+.navbar-custom-head{
+    height: 65px;
+}
 .navbar-custom2 {
-    /*background-color: #293a48;*/
-    background: linear-gradient(to right, #293a48 ,#293a48,#293a48,#293a48, #3687b2,#293a48);
-    padding-top: 12px;
-    padding-bottom: 12px;
-    /**/
+    /*background: linear-gradient(to right, #272528 ,#272528,#272528,#272528, #99989c,#272528);*/
+    background: #36363a;
+}
+.navbar-custom-search {
+   padding-top: 15px;
+   padding-right:70px;
 }
 
 /* change the brand and text color */
