@@ -50,14 +50,15 @@ router.post('/add',function(req,res){
 router.post('/edit',function(req,res){
 
    studentDb.findOneAndUpdate({_id:req.body._id},{$set:{
-        imie    : req.body.imie,
-        nazwisko: req.body.nazwisko,
-        data_ur : req.body.data_ur,
-        pesel   : req.body.pesel,
-        sex     : req.body.sex,
-        nr_klasy: req.body.nr_klasy,
-        szkola  : req.body.szkola,
-        details : req.body.details,
+        imie      : req.body.imie,
+        nazwisko  : req.body.nazwisko,
+        data_ur   : req.body.data_ur,
+        pesel     : req.body.pesel,
+        sex       : req.body.sex,
+        nr_klasy  : req.body.nr_klasy,
+        szkola    : req.body.szkola,
+        details   : req.body.details,
+        isStudent : req.body.isStudent
 
    }},function(error){
        if(!error) res.json({"error":false});
