@@ -4,16 +4,17 @@ var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var Scheam = mongoose.Schema;
 
 var studentSchema = new Scheam({
-    _id     : String,
-    imie    : String,
-    nazwisko: String,
-    data_ur : Date,
-    pesel   : String,
-    sex     : String,
-    date: { type: Date, default: Date.now }, 
-    nr_klasy: {type: String,ref: 'schoolClass'},
-    szkola  : {type: String,ref: 'school'},
-    details : String
+    _id     : { type:String,  default : null},
+    imie    : { type:String,  default : null},
+    nazwisko: { type:String,  default : null},
+    data_ur : { type:Date ,   default : null},
+    pesel   : { type:String,  default : null},
+    sex     : { type:String,  default : null},
+    date    : { type: Date,   default: Date.now }, 
+    nr_klasy: { type: String, default : null, ref: 'schoolClass'},
+    szkola  : { type: String, default : null, ref: 'school'},
+    details : { type: String, default : null},
+    isStudent : { type:Boolean, default : true }
     
 });
 

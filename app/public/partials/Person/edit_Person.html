@@ -42,6 +42,17 @@
                             <th>Szczegóły: </th>
                             <td><textarea  class="form-control" rows="4" ng-model ="form.details"  value="{{form.details}}" /></td>
                         </tr>
+                         <tr>
+                            <th>Uczeń: </th>
+                            <td>
+                                <div class="check">
+                                    <input id="check" ng-model="isStud.bool" ng-change="isStudChange()" type="checkbox"/>
+                                    <label for="check" style="justify-content: inherit;">
+                                        <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:2px;">{{isStud.text}}</div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>           
                     </table>
                 </div>
 

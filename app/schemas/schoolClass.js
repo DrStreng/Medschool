@@ -5,8 +5,8 @@ var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var Scheam = mongoose.Schema;
 
 var schoolClassSchema = new Scheam({
-    _id     : String,
-    nazwa   : String,
+    _id     : {type:String, default : null},
+    nazwa   : {type:String, default : null},
 });
 
 var schoolClass = mongoose.model('schoolClass',schoolClassSchema);

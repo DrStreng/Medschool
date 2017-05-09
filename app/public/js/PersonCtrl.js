@@ -2,6 +2,7 @@
 app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
         $scope.search = {};
+        $scope.searchText = "";
 
         $scope.message = {
             text : '',
@@ -15,20 +16,12 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             K : true
         };
 
+        $scope.isStudSearch = {
+            T : true,
+            N : true
+        };
+
         $scope.change = function(sex){
-            
-            if(sex=='M' && $scope.searchSex.M == true){
-                $scope.searchSex.M == false
-            }
-            else if(sex=='M' && $scope.searchSex.M == false){
-                $scope.searchSex.M == true
-            }
-            else if(sex=='K' && $scope.searchSex.K == false){
-                $scope.searchSex.K == true
-            }
-            else {
-                $scope.searchSex.K == false
-            }
             
             if($scope.searchSex.M === true && $scope.searchSex.K === true){
                 $scope.search.sex = undefined
@@ -40,6 +33,20 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 $scope.search.sex = 'K'
             } else {
                 $scope.search.sex = 'M'
+            }
+        }
+
+        $scope.changeisStud = function(bool){
+            if($scope.isStudSearch.T == true && $scope.isStudSearch.N ==true){
+                $scope.search.isStudent = undefined
+            }
+            else if($scope.isStudSearch.T == false && $scope.isStudSearch.N==false){
+                $scope.search.isStudent = undefined
+            }
+            else if($scope.isStudSearch.T == true && $scope.isStudSearch.N==false){
+                $scope.search.isStudent = true
+            } else  {
+                $scope.search.isStudent = false
             }
             
         }
@@ -58,7 +65,28 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 M : true,
                 K : true
             };
+            $scope.isStudSearch = {
+                T : true,
+                N : true
+            };
         }
+
+        $scope.clearSearch2 = function(){
+            $scope.searchText = "";
+        }
+
+        $scope.isStudChange = function(){
+           
+            if($scope.isStud.bool == true){
+                 $scope.form.isStudent = true
+                 $scope.isStud = { bool:true, text:'Tak'}
+            } else {
+                $scope.isStud = { bool:false, text:'Nie'}
+                $scope.form.isStudent = false
+            }
+        }
+
+
             
         var referesh = function(){
             $http.get('/students/all').then(function(res){
@@ -145,6 +173,8 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 $scope.studentslist = a;
         });
 
+     
+
         var createDate = function(data){
 
             if($scope.aaa.data_ur != null){
@@ -154,10 +184,18 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 var curr_year = d.getFullYear();
                 data.data_ur = new Date(curr_year , curr_month , curr_date)  
             }
-
+            
             $scope.form = data;
-   
+
+            if($scope.form.isStudent == true){
+                $scope.isStud = { bool:true, text:'Tak'}
+            } else {
+                $scope.isStud = { bool:false, text:'Nie'}
+            }
+             
         }
+
+        
 
         $scope.getPersonByParams = function(){
             var id = $routeParams.id;
@@ -195,14 +233,17 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
 
         $scope.createPersonDetailsPDF = function(a){
+         
 
-
-            var d = new Date(a.data_ur)
-            var dzien = d.getDate();
-            var miesiac = d.getMonth();
-            var rok = d.getFullYear();
-            var data_ur = dzien +'/'+miesiac+'/'+rok;
-        
+            if(a.data_ur !== null){
+                var d = new Date(a.data_ur)
+                var dzien = d.getDate();
+                var miesiac = d.getMonth();
+                var rok = d.getFullYear();
+                var data_ur = dzien +'/'+miesiac+'/'+rok;
+            } else {
+                data_ur =""
+            }
 
             var docDefinition = {
                 pageSize: 'A4',
@@ -217,10 +258,10 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                                 [ { text: 'Nazwisko: ', bold: true }, a.nazwisko ],
                                 [ { text: 'Data urodzenia: ', bold: true }, data_ur ],
                                 [ { text: 'Pesel: ', bold: true }, a.pesel ],
+                                [ { text: 'Płeć: ', bold: true }, a.sex ],
                                 [ { text: 'Szkoła: ', bold: true }, a.szkola.nazwa ],
                                 [ { text: 'Klasa: ', bold: true }, a.nr_klasy.nazwa ],
                                 [ { text: 'Inne: ', bold: true }, a.details ]
-                  
                             ]
                         }
                     }
