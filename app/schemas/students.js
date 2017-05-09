@@ -9,6 +9,7 @@ var studentSchema = new Scheam({
     nazwisko: String,
     data_ur : Date,
     pesel   : String,
+    sex     : String,
     date: { type: Date, default: Date.now }, 
     nr_klasy: {type: String,ref: 'schoolClass'},
     szkola  : {type: String,ref: 'school'},

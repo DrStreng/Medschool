@@ -1,17 +1,63 @@
 
 app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
+        $scope.search = {};
+
         $scope.message = {
             text : '',
             mode : 'info'
         };
-     
+        $scope.menu = {
+            search : 'Wyszukiwanie zaawansowane'
+        }
+         $scope.searchSex = {
+            M : true,
+            K : true
+        };
+
+        $scope.change = function(sex){
+            
+            if(sex=='M' && $scope.searchSex.M == true){
+                $scope.searchSex.M == false
+            }
+            else if(sex=='M' && $scope.searchSex.M == false){
+                $scope.searchSex.M == true
+            }
+            else if(sex=='K' && $scope.searchSex.K == false){
+                $scope.searchSex.K == true
+            }
+            else {
+                $scope.searchSex.K == false
+            }
+            
+            if($scope.searchSex.M === true && $scope.searchSex.K === true){
+                $scope.search.sex = undefined
+            } 
+            else if ($scope.searchSex.M === false && $scope.searchSex.K === false){
+                $scope.search.sex = undefined
+            }
+            else if ($scope.searchSex.M === false && $scope.searchSex.K === true){
+                $scope.search.sex = 'K'
+            } else {
+                $scope.search.sex = 'M'
+            }
+            
+        }
+
         $scope.sortType = "imie"; 
         $scope.sortReverse = false;
         $scope.searchPerson = "";
 
         $scope.clearMessage = function(){
             $scope.message.text ="";
+        }
+
+        $scope.clearSearch = function(){
+            $scope.search = {};
+            $scope.searchSex = {
+                M : true,
+                K : true
+            };
         }
             
         var referesh = function(){
@@ -66,6 +112,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                     "nazwisko":$scope.person.nazwisko,
                     "data_ur":$scope.person.data_ur,
                     "pesel":$scope.person.pesel,
+                    "sex"  : $scope.person.sex,
                     "szkola":$scope.person.szkola,
                     "nr_klasy":$scope.schoolClass[0]
                 }
@@ -94,6 +141,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
         $http.get('/students/all').then(function(res){
              var a = res.data;
+             
                 $scope.studentslist = a;
         });
 
@@ -114,6 +162,12 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
         $scope.getPersonByParams = function(){
             var id = $routeParams.id;
             $http.get('/students/get/'+id).then(function(res){
+                if(res.data.sex == "M"){
+                    res.data.sex = "Mężczyzna"
+                }
+                else if(res.data.sex == "K"){
+                    res.data.sex = "Kobieta"
+                }
                 $scope.aaa = res.data;
                 createDate(res.data)
 

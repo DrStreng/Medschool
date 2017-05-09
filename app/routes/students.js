@@ -34,6 +34,7 @@ router.post('/add',function(req,res){
         data_ur : req.body.data_ur,
         pesel   : req.body.pesel,
         nr_klasy: req.body.nr_klasy,
+        sex     : req.body.sex,
         szkola  : req.body.szkola
     });
 
@@ -53,6 +54,7 @@ router.post('/edit',function(req,res){
         nazwisko: req.body.nazwisko,
         data_ur : req.body.data_ur,
         pesel   : req.body.pesel,
+        sex     : req.body.sex,
         nr_klasy: req.body.nr_klasy,
         szkola  : req.body.szkola,
         details : req.body.details,
