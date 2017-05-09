@@ -29,7 +29,7 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Wyszukiwanie zaawansowane</a></li>
+            <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>{{menu.search}}</a></li>
             <li><a href="#!/Person/add"><span class="glyphicon glyphicon-pad glyphicon-plus" aria-hidden="true"></span>Dodaj Ucznia</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -38,6 +38,58 @@
           </ul>
         </div>
 
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span> {{menu.search}}</h4>
+          </div>
+          <div class="modal-body">
+            <p>Kogo poszukujemy ?</p>
+            <div class="form-group">
+                    <label for="data_ur" class="control-label">Imię</label>
+                    <input  class="form-control" ng-model="search.imie" >
+                </div>
+                <div class="form-group">
+                    <label for="data_ur" class="control-label">Nazwisko</label>
+                    <input  class="form-control" ng-model="search.nazwisko" >
+                </div>
+                <div class="form-group">
+                    <label for="data_ur" class="control-label">PESEL</label>
+                    <input  class="form-control" ng-model="search.pesel" >
+                </div>  
+                
+                    <label for="data_ur" class="control-label">Płeć</label></br>
+                
+                   <div class="check">
+                        <input id="check2" ng-model="searchSex.M" ng-change="change('M')" type="checkbox"/>
+                        <label for="check2" style="justify-content: inherit;">
+                            <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:2px;">Mężczyzna</div>
+                        </label>
+                    </div>
+
+                   <div class="check">
+                        <input id="check1" ng-model="searchSex.K" ng-change="change('K')" type="checkbox"/>
+                        <label for="check1" style="justify-content: inherit;">
+                            <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:2px;">Kobieta</div>
+                        </label>
+                    </div>
+            
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" ng-click=clearSearch()>Wyczyść</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
 
@@ -85,7 +137,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="a in studentslist | orderBy:sortType:sortReverse |  filter:searchText ">
+          <tr ng-repeat="a in studentslist | orderBy:sortType:sortReverse |  filter:searchText | filter:search">
             <td>{{$index}}</td>
             <td>  
               <div class="check">
