@@ -1,6 +1,11 @@
 
 app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
+        $scope.title = {
+            title : "Uczniowie",
+            glyph : 'list'
+        } 
+        
         $scope.search = {};
         $scope.searchText = "";
 
@@ -48,7 +53,6 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             } else  {
                 $scope.search.isStudent = false
             }
-            
         }
 
         $scope.sortType = "imie"; 
@@ -174,6 +178,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
         });
 
      
+  
 
         var createDate = function(data){
 
@@ -184,18 +189,27 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 var curr_year = d.getFullYear();
                 data.data_ur = new Date(curr_year , curr_month , curr_date)  
             }
-            
+          
             $scope.form = data;
+        
+            $http.get('/schools/all').then(function(res){
+                        $scope.schools = res.data;
+                        var values =  $scope.schools;
+                        angular.forEach(values, function(value, key) {
+                            if(value._id == data.szkola._id){
+                                $scope.form.szkola = $scope.schools[key];
+                            }
+                        });
+                                      
+                    });
+           
 
             if($scope.form.isStudent == true){
                 $scope.isStud = { bool:true, text:'Tak'}
             } else {
                 $scope.isStud = { bool:false, text:'Nie'}
             }
-             
         }
-
-        
 
         $scope.getPersonByParams = function(){
             var id = $routeParams.id;
@@ -213,6 +227,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
         }
 
           $scope.editPersonForm = function(isValid){
+                console.log($scope.form.szkola)
                 $http.post('/students/edit',$scope.form).then(function(res){
                     if(res.data.error){
                         $scope.message = {

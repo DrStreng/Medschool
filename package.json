@@ -78,8 +78,8 @@
     "position": "center",
     "width": 1680,
     "height": 1050,
-    "min_width": 1000,
-    "min_height": 700,
+    "min_width": 1440,
+    "min_height": 800,
     "icon": ""
   }
 }
