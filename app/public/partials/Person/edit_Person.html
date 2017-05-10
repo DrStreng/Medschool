@@ -30,9 +30,14 @@
                             <th>PESEL: </th>
                             <td><input type="text" class="form-control" ng-model ="form.pesel"  value="{{form.pesel}}" ></td>
                         </tr>
-                        <tr>
-                            <th>Szkoła: </th>
-                            <td>{{aaa.szkola.nazwa}}</td>
+                         <tr>
+                            <th>Szkola: </th>
+                            <td>
+                                <select class="form-control"  
+                                        ng-model="form.szkola" 
+                                        ng-options="option.nazwa for option in schools track by option._id" >
+                                </select>  
+                            </td>
                         </tr>
                         <tr>
                             <th>Klasa: </th>

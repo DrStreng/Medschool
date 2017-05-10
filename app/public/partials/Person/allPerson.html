@@ -1,44 +1,30 @@
 
-<div ng-include src="'partials/search.html'"></div>
 
 <div class="container-fluid">
 
     <div class="row ">
 
-      <div class="col-md-6">
-        <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span><strong>Uczniowie</strong></h3>
+      <div ng-include src="'partials/Menu/search.html'"></div>
+
+      <div class="col-md-2 navbar-right select-action">
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-custom"><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
+            <button type="button"  class="btn dropdown-toggle btn-custom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a data-toggle="modal" ng-click=clearSearch2() data-target="#myModal"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>{{menu.search}}</a></li>
+              <li><a href="#!/Person/add"><span class="glyphicon glyphicon-pad glyphicon-plus" aria-hidden="true"></span>Dodaj Ucznia</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+
       </div>
-
-    <!--<div class="col-sm-1">
-      <div class="form-group">
-        <select class="form-control" id="sel1">
-          <option>10</option>
-          <option>20</option>
-          <option>50</option>
-          <option>All</option>
-        </select>
-      </div>
-    </div>-->
-
-    <div class="col-md-2 navbar-right select-action">
-
-        <div class="btn-group">
-          <button type="button" class="btn btn-custom"><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
-          <button type="button"  class="btn dropdown-toggle btn-custom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a data-toggle="modal" ng-click=clearSearch2() data-target="#myModal"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>{{menu.search}}</a></li>
-            <li><a href="#!/Person/add"><span class="glyphicon glyphicon-pad glyphicon-plus" aria-hidden="true"></span>Dodaj Ucznia</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-
-    </div>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -92,7 +78,7 @@
                     <div class="check">
                         <input id="checkisStud1" ng-model="isStudSearch.T" ng-change="changeisStud('T')" type="checkbox"/>
                         <label for="checkisStud1" style="justify-content: inherit;">
-                            <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:5px;">Jest Uczniem</div>
+                            <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:5px;">Jest Uczniem?</div>
                         </label>
                     </div>
                   </div>
@@ -100,7 +86,7 @@
                     <div class="check">
                         <input id="checkisStud2" ng-model="isStudSearch.N" ng-change="changeisStud('N')" type="checkbox"/>
                         <label for="checkisStud2" style="justify-content: inherit;">
-                            <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:5px;">Nie Jest Uczniem</div>
+                            <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:5px;">Ukończył szkołę?</div>
                         </label>
                     </div>
                 </div>

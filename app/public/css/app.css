@@ -1,18 +1,26 @@
 body {
     overflow:hidden;
-    /*background-color: #ebf0ff;*/
 }
-
- /*.content > .container-fluid{
-    padding-top:50px;
-}*/
 
  .active { 
     background-color: #1ba3d6;
-    border-radius: 3px; 
-    
+    border-radius: 3px;   
+}
+.navbar-custom2 {
+    /*background: linear-gradient(to right, #272528 ,#272528,#272528,#272528, #99989c,#272528);*/
+    background: #36363a;
+    z-index: 1;
 }
 
+ol, ul {
+    margin-bottom:0px;
+}
+
+.navbar {
+    margin-bottom:0px;
+    border: 0px ;
+      border-radius: 0px;
+}
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #a0ddf3;
@@ -87,7 +95,9 @@ a{
 }
 
 .main {
-  padding-top:70px;  
+  padding-top: 0px; 
+  padding-left: 250px;
+  z-index: 2; 
 }
  h3 {
      padding-bottom: 20px;
@@ -108,10 +118,6 @@ a{
     height:700px;
 }
 
-.z {
-    padding-left: 250px;
-    z-index: 1;
-}
 .z3 {
     position: absolute;
     z-index: 2;
@@ -148,18 +154,15 @@ a{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-
 }
+
 .navbar-custom-head{
     height: 65px;
 }
-.navbar-custom2 {
-    /*background: linear-gradient(to right, #272528 ,#272528,#272528,#272528, #99989c,#272528);*/
-    background: #36363a;
-}
+
 .navbar-custom-search {
-   padding-top: 15px;
-   padding-right:70px;
+   padding-top: 23px;
+   
 }
 
 /* change the brand and text color */

@@ -2,6 +2,11 @@
     
     app.controller('SchoolCtrl', function($scope,$http,$routeParams,$sce) {
 
+          $scope.title = {
+            title : "Szkoły",
+            glyph : 'leaf'
+        } 
+        
          $scope.sortType = "nazwa"; 
          $scope.sortReverse = false;
 
