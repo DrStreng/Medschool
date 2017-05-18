@@ -3,7 +3,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
         $scope.title = {
             title : "Uczniowie",
-            glyph : 'list'
+            glyph : 'user'
         } 
         
         $scope.search = {};
@@ -178,40 +178,31 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
         });
 
      
-  
-
-        var createDate = function(data){
-
-            if($scope.aaa.data_ur != null){
-                var d = new Date($scope.aaa.data_ur);
-                var curr_date = d.getDate();
-                var curr_month = d.getMonth() ; 
-                var curr_year = d.getFullYear();
-                data.data_ur = new Date(curr_year , curr_month , curr_date)  
+    $scope.select = function(data){
+            var send = {
+                _id: data._id
             }
-          
-            $scope.form = data;
-        
-            $http.get('/schools/all').then(function(res){
-                        $scope.schools = res.data;
-                        var values =  $scope.schools;
-                        angular.forEach(values, function(value, key) {
-                            if(value._id == data.szkola._id){
-                                $scope.form.szkola = $scope.schools[key];
-                            }
-                        });
-                                      
-                    });
-           
+            $http.post('/schools/getBySchoolId',send).then(function(res){
+                $scope.schoolClass1 = res.data.klasa;
+            });
+    }
 
-            if($scope.form.isStudent == true){
-                $scope.isStud = { bool:true, text:'Tak'}
-            } else {
-                $scope.isStud = { bool:false, text:'Nie'}
-            }
-        }
+    $scope.getPerson = function(){
+        var id = $routeParams.id;
+        $http.get('/students/get/'+id).then(function(res){
+                if(res.data.sex == "M"){
+                    res.data.sex = "Mężczyzna"
+                }
+                else if(res.data.sex == "K"){
+                    res.data.sex = "Kobieta"
+                }
+                $scope.bbb = res.data;
+    })
+    }
+
 
         $scope.getPersonByParams = function(){
+
             var id = $routeParams.id;
             $http.get('/students/get/'+id).then(function(res){
                 if(res.data.sex == "M"){
@@ -221,13 +212,39 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                     res.data.sex = "Kobieta"
                 }
                 $scope.aaa = res.data;
-                createDate(res.data)
 
+                if($scope.aaa.data_ur != null){
+                    var d = new Date($scope.aaa.data_ur);
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth() ; 
+                    var curr_year = d.getFullYear();
+                    res.data.data_ur = new Date(curr_year , curr_month , curr_date)  
+                }
+          
+                $scope.form = res.data;
+                var send = {
+                    _id: res.data.szkola._id
+                }
+
+                $http.post('/schools/getBySchoolId',send).then(function(sc){
+                    $scope.schoolClass1 = sc.data.klasa;
+                    angular.forEach($scope.schoolClass1,function(element,key) {  
+                      if(element._id == $scope.form.nr_klasy._id) {
+                        $scope.form.nr_klasy = $scope.schoolClass1[key]
+                      }
+                    });
+                });
+
+                if($scope.form.isStudent == true){
+                    $scope.isStud = { bool:true, text:'Tak'}
+                } else {
+                    $scope.isStud = { bool:false, text:'Nie'}
+                }
+                
             });
         }
 
           $scope.editPersonForm = function(isValid){
-                console.log($scope.form.szkola)
                 $http.post('/students/edit',$scope.form).then(function(res){
                     if(res.data.error){
                         $scope.message = {
@@ -240,11 +257,14 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                             mode : 'success'
                         };
                     }
-                    
-                    
-                });     
+                }); 
+                $scope.getPerson();    
             
           }
+          
+            $scope.clearEdit = function() {
+                $scope.getPersonByParams();
+            }
 
 
         $scope.createPersonDetailsPDF = function(a){

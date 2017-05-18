@@ -1,41 +1,50 @@
 <div class="container-fluid">
-    <div ng-init="getPersonByParams()">
-        <h3><strong>{{aaa.nazwisko}} {{aaa.imie}}</strong></h3>
-        </br>
+    
+    <div ng-init="getPerson()">
+        <h3><strong>{{bbb.nazwisko}} {{bbb.imie}}</strong></h3>
+                
+        
+                                
         <div class="row">
             <div class="col-md-10" id="HTMLtoPDF">
+
+                <div class="alert alert-{{message.mode}} " ng-if="message.text">
+                    <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
+                    <strong>Info!</strong> {{message.text}}
+                </div>
+
                 <table class="table table-width table-details" >
                     <tr>
                         <th>Imię: </th>
-                        <td><span>{{aaa.imie}}</span></td>
+                        <td><span>{{bbb.imie}}</span></td>
                     </tr>
                     <tr>
                         <th>Nazwisko: </th>
-                        <td>{{aaa.nazwisko}}</td>
+                        <td>{{bbb.nazwisko}}</td>
                     </tr>
                     <tr>
                         <th>Data urodzenia: </th>
-                        <td>{{aaa.data_ur | date:'dd-MM-yyyy'}}</td>
+                        <td>{{bbb.data_ur | date:'dd-MM-yyyy'}}</td>
                     </tr>
                     <tr>
                         <th>PESEL: </th>
-                        <td>{{aaa.pesel}}</td>
+                        <td>{{bbb.pesel}}</td>
                     </tr>
                     <tr>
                         <th>Płeć: </th>
-                        <td>{{aaa.sex}}</td>
+                        <td>{{bbb.sex}}</td>
                     </tr>
                     <tr>
                         <th>Szkoła: </th>
-                        <td>{{aaa.szkola.nazwa}}</td>
+                        <td>{{bbb.szkola.nazwa}}</td>
                     </tr>
                     <tr>
                         <th>Klasa: </th>
-                        <td>{{aaa.nr_klasy.nazwa}}</td>
+                        <td>{{bbb.nr_klasy.nazwa}}</td>
                     </tr>
                     <tr>
                         <th>Szczegóły: </th>
-                        <td>{{aaa.details}}</td>
+                        <td>{{bbb.details}}</td>
                     </tr>
                 </table>
                 </br>
@@ -43,11 +52,16 @@
             </div>
             <div class="col-md-2"></br>
                 <button type="submit"  class="btn btn-primary btn-block">Do SOMETHING</button>
-                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING DIFRENT </button>
-                <button type="submit" ng-click="createPersonDetailsPDF(aaa)" class="btn btn-info btn-block"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> UTWÓRZ PDF </button>
-                <a href="{{link_edit2()}}"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  EDYTUJ</a>
+                <button type="submit" data-toggle="modal" data-target="#myModaledit"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> EDYTUJ</button>
+                <button type="submit" ng-click="createPersonDetailsPDF(bbb)" class="btn btn-info btn-block"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> UTWÓRZ PDF </button>
                 </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+                </br></br><strong>KONTAKT</strong></br></br>
+                <span class="glyphicon glyphicon-phone-alt" aria-hidden="true">  123 435 234</br></br>
+                <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"> 48 123 123 123</br>
             </div>
+
         </div>
     </div>
+            <!-- Modal -->
+            <div ng-include src="'partials/Person/edit_Person.html'"></div>
 </div>

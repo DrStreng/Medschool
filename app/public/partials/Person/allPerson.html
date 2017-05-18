@@ -3,11 +3,8 @@
 <div class="container-fluid">
 
     <div class="row ">
-
       <div ng-include src="'partials/Menu/search.html'"></div>
-
       <div class="col-md-2 navbar-right select-action">
-
           <div class="btn-group">
             <button type="button" class="btn btn-custom"><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
             <button type="button"  class="btn dropdown-toggle btn-custom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -165,13 +162,18 @@
             <td>{{a.nr_klasy.nazwa}}</td>
             <td>{{a.szkola.nazwa}}</td>
             <td class="tab-actions">
-                <a href="{{link(a)}}" ><span class="glyphicon glyphicon-user glyph-icon-custom glyph-icon-custom-details"  aria-hidden="true"></span></a>
-                <a href="{{link_edit(a)}}" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
+                <a href="{{link(a)}}" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details"  aria-hidden="true"></span></a>
+                <!--<a href="" data-toggle="modal" data-target="#myModaledit" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>-->
+                <!--Modal 
+                <div ng-include src="'partials/Person/edit_Person.html'"></div>-->
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+
+             
 
     
  

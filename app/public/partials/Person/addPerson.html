@@ -1,7 +1,6 @@
 
     <div ng-controller="PersonCtrl" class="container-fluid">
 
-
         <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
             <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
             <strong>Info!</strong> {{message.text}}
@@ -72,8 +71,7 @@
             </form>
         </div>
         
-        <div ng-include src="'partials/lastAdd.html'"></div>
-        
+        <div ng-include src="'partials/lastAdd.html'"></div>  
     </div>
      </div>
 

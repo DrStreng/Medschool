@@ -15,6 +15,17 @@ router.get('/all',function(req,res){
     });
 });
 
+router.get('/ByClass/:_id',function(req,res){
+    studentDb.find({'nr_klasy':req.params._id}).deepPopulate('nr_klasy').exec(function(err,list){
+        if(err){
+            throw err;
+        } else {
+            res.json(list);
+        }
+    })
+});
+
+
 router.get('/get/:_id',function(req,res){
     studentDb.findOne({'_id':req.params._id}).deepPopulate('szkola,nr_klasy').exec(function(err,person){
         if(err){

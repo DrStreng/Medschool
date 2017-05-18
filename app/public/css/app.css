@@ -1,6 +1,18 @@
 body {
     overflow:hidden;
 }
+button > [class^="gy-"] { 
+    color: yellow;
+ }
+
+
+ .div { 
+   width: 200px; 
+   height: 100px; 
+   padding: 20px 15px 10px; 
+   margin: 10px 20px 15px; 
+   border: 5px solid #000; 
+}
 
  .active { 
     background-color: #1ba3d6;
@@ -116,6 +128,10 @@ a{
 .myscroll {
     overflow:auto;
     height:700px;
+}
+.myscrollsmall {
+    overflow:auto;
+    height:300px;
 }
 
 .z3 {
