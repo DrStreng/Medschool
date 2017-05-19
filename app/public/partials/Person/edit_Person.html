@@ -51,6 +51,20 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Ośrodek Zdrowia: </th>
+                                                    <td>
+                                                        <select class = "form-control"
+                                                                ng-model="form.hc">
+                                                                <option 
+                                                                    ng-repeat="option in listHC " 
+                                                                    value="{{option._id}}"
+                                                                    ng-style="option.isMine === false && {'background-color':'#fc685d'}"
+                                                                    >{{option.name}} 
+                                                                </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>Szczegóły: </th>
                                                     <td><textarea  class="form-control" rows="4" ng-model ="form.details"  value="{{form.details}}" /></td>
                                                 </tr>

@@ -6,7 +6,7 @@ var db = require('../schemas/schoolClass');
 mongoose.Promise     = global.Promise;
 
 router.get('/all',function(req,res){
-    studentDb.find({}).deepPopulate('szkola,nr_klasy').exec(function(err,data){
+    studentDb.find({}).deepPopulate('szkola,nr_klasy,hc').exec(function(err,data){
         if(err){
             console.log(err);
         } else {
@@ -27,7 +27,7 @@ router.get('/ByClass/:_id',function(req,res){
 
 
 router.get('/get/:_id',function(req,res){
-    studentDb.findOne({'_id':req.params._id}).deepPopulate('szkola,nr_klasy').exec(function(err,person){
+    studentDb.findOne({'_id':req.params._id}).deepPopulate('szkola,nr_klasy,hc').exec(function(err,person){
         if(err){
             throw err;
         } else {
@@ -46,7 +46,8 @@ router.post('/add',function(req,res){
         pesel   : req.body.pesel,
         nr_klasy: req.body.nr_klasy,
         sex     : req.body.sex,
-        szkola  : req.body.szkola
+        szkola  : req.body.szkola,
+        hc      : req.body.hc
     });
 
    student.save(function(err,data){
@@ -69,7 +70,8 @@ router.post('/edit',function(req,res){
         nr_klasy  : req.body.nr_klasy,
         szkola    : req.body.szkola,
         details   : req.body.details,
-        isStudent : req.body.isStudent
+        isStudent : req.body.isStudent,
+        hc        : req.body.hc
 
    }},function(error){
        if(!error) res.json({"error":false});

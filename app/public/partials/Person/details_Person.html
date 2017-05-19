@@ -43,6 +43,10 @@
                         <td>{{bbb.nr_klasy.nazwa}}</td>
                     </tr>
                     <tr>
+                        <th>Ośrodek Zdrowia: </th>
+                        <td>{{bbb.hc.name}} <a href="" ng-if="bbb.hc.isMine === false"><span class="glyphicon glyphicon-fire glyph-icon-custom glyph-icon-custom-warning"  aria-hidden="true"></span></a></td>
+                    </tr>
+                    <tr>
                         <th>Szczegóły: </th>
                         <td>{{bbb.details}}</td>
                     </tr>

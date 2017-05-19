@@ -1,18 +1,6 @@
 body {
     overflow:hidden;
 }
-button > [class^="gy-"] { 
-    color: yellow;
- }
-
-
- .div { 
-   width: 200px; 
-   height: 100px; 
-   padding: 20px 15px 10px; 
-   margin: 10px 20px 15px; 
-   border: 5px solid #000; 
-}
 
  .active { 
     background-color: #1ba3d6;
@@ -58,6 +46,9 @@ ol, ul {
 }
 .glyph-icon-custom-edit {
     color:#00b700;
+}
+.glyph-icon-custom-warning {
+    color:#f91616;
 }
 .btn-custom {
     background-color: #33b5e5;

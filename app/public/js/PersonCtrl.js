@@ -115,6 +115,9 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                         });
                     });//END SELECT SCHOOL
             });
+             $http.get('/healthCenter/all').then(function(res){
+                $scope.listHC = res.data;
+            });
         }
 
         referesh();
@@ -197,6 +200,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                     res.data.sex = "Kobieta"
                 }
                 $scope.bbb = res.data;
+                console.log($scope.bbb)
     })
     }
 
@@ -234,6 +238,12 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                       }
                     });
                 });
+                angular.forEach($scope.listHC,function(element,key){
+                    console.log(element)
+                    if(element._id == $scope.form.hc._id){
+                        $scope.form.hc = $scope.listHC[key]._id
+                    }
+                })
 
                 if($scope.form.isStudent == true){
                     $scope.isStud = { bool:true, text:'Tak'}
@@ -323,6 +333,8 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
     
 });
+
+
 
 
 
