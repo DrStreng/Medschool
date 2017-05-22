@@ -1,0 +1,94 @@
+<div class="container-fluid " >
+
+
+
+    <div ng-init="getAllHC()">
+        <div class="row ">
+            <div ng-include src="'partials/Menu/search.html'"></div>
+            <!-- Modal add-->
+            <div ng-include src="'partials/HealthCenter/add_HC.html'"></div>
+            <!-- Modal edit-->
+            <div ng-include src="'partials/HealthCenter/edit_HC.html'"></div>
+
+            <div class="col-md-2 navbar-right select-action">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-custom "><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
+                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Wyszukiwanie zaawansowane</a></li>
+                        <li><a data-toggle="modal" data-target="#modalAddHC"><span class="glyphicon glyphicon-pad glyphicon-plus"  aria-hidden="true"></span>Dodaj Ośrodek Zdrowia</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
+            <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
+            <strong>Info!</strong> {{message.text}}
+        </div>
+            
+        <div class="table-responsive myscrollsmall">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr ng-style=" {'background-color': '#36363a','color':'white'}">
+                    <th style="width: 10px">#</th>
+                    <th style="width: 30px"></th>
+                    <th ng-click="sortType = 'name'; sortReverse = !sortReverse" >MOJATESTOWANAZWAOSRODKA
+                        <span ng-show="sortType != 'name'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'name' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'name' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span>
+                    </th>
+                    <th ng-click="sortType = 'fullName'; sortReverse = !sortReverse" >FULLNAME
+                        <span ng-show="sortType != 'fullName'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'fullName' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'fullName' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span>
+                    </th>
+                    <th ng-click="sortType = 'address'; sortReverse = !sortReverse" >ADDRESS
+                        <span ng-show="sortType != 'address'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'address' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'address' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span>
+                    </th>
+                    <th ng-click="sortType = 'isMine'; sortReverse = !sortReverse" >Moje ośrodki
+                        <span ng-show="sortType != 'isMine'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'isMine' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'isMine' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span>
+                    </th>
+                    <th class="tab-actions">Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="a in listHC | orderBy:sortType:sortReverse | filter:searchText" >
+                        <td >{{$index+1}}</td>
+                        <td>  
+                        <div class="check">
+                            <input id="check{{$index}}" type="checkbox"/>
+                            <label for="check{{$index}}">
+                                <div class="box"><i class="fa fa-check"></i></div>
+                            </label>
+                        </div>
+                    
+                        </td>
+                        <td>{{a.name}}</td>
+                        <td>{{a.fullName}}</td>
+                        <td>{{a.address}}</td>
+                        <td>{{a.isMine}}</td>
+                        
+                        <td class="tab-actions">
+                            <a href="" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details" aria-hidden="true"></span></a>
+                            <a ng-click=getEditHC(a) data-toggle="modal" data-target="#modalEditHC" href="" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
+                        </td>
+                    
+                    </tr>
+                </tbody>
+            </table>  
+        </div>
+
+   
+</div>

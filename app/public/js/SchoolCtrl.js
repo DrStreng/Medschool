@@ -4,7 +4,7 @@
 
           $scope.title = {
             title : "Szkoły",
-            glyph : 'leaf'
+            glyph : 'education'
         } 
         
          $scope.sortType = "nazwa"; 

@@ -1,7 +1,6 @@
 
     <div ng-controller="PersonCtrl" class="container-fluid">
 
-
         <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
             <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
             <strong>Info!</strong> {{message.text}}
@@ -63,6 +62,16 @@
                             ng-options="option.nazwa for option in schoolClass" required>
                     </select>
                 </div>
+
+                <div class="form-group" ng-class="{'has-error' : add_person_form.hc.$invalid && !add_person_form.hc.$pristine}">
+                    <label for="hc">Ośrodek Zdrowia</label>
+                    <select class="form-control" name="hc" 
+                         
+                            ng-model="person.hc" 
+                            ng-options="option.name for option in listHC">
+                            <option value="">Proszę wybrać Ośrodek Zdrowia</option>
+                    </select>
+                </div>
                   
                    
                 <div class="form-group">
@@ -72,8 +81,7 @@
             </form>
         </div>
         
-        <div ng-include src="'partials/lastAdd.html'"></div>
-        
+        <div ng-include src="'partials/lastAdd.html'"></div>  
     </div>
      </div>
 

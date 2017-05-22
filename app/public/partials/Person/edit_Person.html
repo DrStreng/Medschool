@@ -1,80 +1,118 @@
-<div class="container-fluid">
+<div id="myModaledit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-        <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
-            <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
-            <strong>Info!</strong> {{message.text}}
-        </div>
-        
-    <div ng-init="getPersonByParams()">
-        <h3><strong>Edycja: {{aaa.nazwisko}} {{aaa.imie}}</strong></h3>
-        </br>
-        <div class="row">
-            <form name ="edit-person-form" ng-submit="editPersonForm(edit-person-form)" novalidate angular-validator>
-                <div class="col-md-10">
-
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div ng-init="getPersonByParams()">
+                <form name ="edit-person-form" ng-submit="editPersonForm(edit-person-form)" novalidate angular-validator>
+                    <!-- Modal header-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Edit</h4>
+                    </div><!-- Modal header end-->
                     
-                    <table class="table table-width">
-                        <tr>
-                            <th>Imię: </th>
-                            <td><input type="text" class="form-control" ng-model ="form.imie" value="{{form.imie}}" ></td>
-                        </tr>
-                        <tr>
-                            <th>Nazwisko: </th>
-                            <td><input type="text" class="form-control" ng-model ="form.nazwisko" value="{{form.nazwisko}}"></td>
-                        </tr>
-                        <tr>
-                            <th>Data urodzenia: </th>
-                            <td><input type="date" class="form-control" ng-model ="form.data_ur" value="{{form.data_ur }}" format-date></td>
-                        </tr>
-                        <tr>
-                            <th>PESEL: </th>
-                            <td><input type="text" class="form-control" ng-model ="form.pesel"  value="{{form.pesel}}" ></td>
-                        </tr>
-                         <tr>
-                            <th>Szkola: </th>
-                            <td>
-                                <select class="form-control"  
-                                        ng-model="form.szkola" 
-                                        ng-options="option.nazwa for option in schools track by option._id" >
-                                </select>  
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Klasa: </th>
-                            <td>{{aaa.nr_klasy.nazwa}}</td>
-                        </tr>
-                        <tr>
-                            <th>Szczegóły: </th>
-                            <td><textarea  class="form-control" rows="4" ng-model ="form.details"  value="{{form.details}}" /></td>
-                        </tr>
-                         <tr>
-                            <th>Uczeń: </th>
-                            <td>
-                                <div class="check">
-                                    <input id="check" ng-model="isStud.bool" ng-change="isStudChange()" type="checkbox"/>
-                                    <label for="check" style="justify-content: inherit;">
-                                        <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:2px;">{{isStud.text}}</div>
-                                    </label>
-                                </div>
-                            </td>
-                        </tr>           
-                    </table>
-                </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">  
+                            <div class="container-fluid">
 
-                <div class="col-md-2"></br>
-                        <button type="submit"  class="btn btn-primary btn-block"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> ZAPISZ ZMIANY</button>
-                </div>
+                                            <table class="table table-width">
+                                                <tr>
+                                                    <th>Imię: </th>
+                                                    <td><input type="text" class="form-control" ng-model ="form.imie" value="{{form.imie}}" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Nazwisko: </th>
+                                                    <td><input type="text" class="form-control" ng-model ="form.nazwisko" value="{{form.nazwisko}}"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Data urodzenia: </th>
+                                                    <td><input type="date" class="form-control" ng-model ="form.data_ur" value="{{form.data_ur }}" format-date></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PESEL: </th>
+                                                    <td><input type="text" class="form-control" ng-model ="form.pesel"  value="{{form.pesel}}" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PŁEĆ: </th>
+                                                    <td> 
+                                                        <select class = "form-control"
+                                                                ng-model="form.sex">
+                                                                <option 
+                                                                    ng-repeat="option in plec " 
+                                                                    value="{{option.sex}}"
+                                                                    >{{option.text}} 
+                                                                </option>
+                                                        </select>    
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Szkola: </th>
+                                                    <td>
+                                                        <select class="form-control"  
+                                                                ng-model="form.szkola" 
+                                                                ng-options="option.nazwa for option in schools track by option._id" 
+                                                                ng-change="select(form.szkola)">
+                                                        </select>  
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Klasa: </th>
+                                                    <td>
+                                                        <select class = "form-control"
+                                                                ng-model="form.nr_klasy"
+                                                                ng-options="option.nazwa for option in schoolClass1 ">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Ośrodek Zdrowia: </th>
+                                                    <td>
+                                                        <select class = "form-control"
+                                                                ng-model="form.hc">
+                                                                <option 
+                                                                    ng-repeat="option in listHC " 
+                                                                    value="{{option._id}}"
+                                                                    ng-style="option.isMine === false && {'background-color':'#fc685d'}"
+                                                                    >{{option.name}} 
+                                                                </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Szczegóły: </th>
+                                                    <td><textarea  class="form-control" rows="4" ng-model ="form.details"  value="{{form.details}}" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Uczeń: </th>
+                                                    <td>
+                                                        <div class="check">
+                                                            <input id="check" ng-model="isStud.bool" ng-change="isStudChange()" type="checkbox"/>
+                                                            <label for="check" style="justify-content: inherit;">
+                                                                <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:2px;">{{isStud.text}}</div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>           
+                                            </table>
+                                    
 
-            </form>
+                                    <!--<div class="col-md-2"></br>
+                                        <button type="submit"  class="btn btn-info btn-block">Do SOMETHING</button>
+                                        <button type="submit"  class="btn btn-info btn-block">Do SOMETHING ELSE</button>
+                                        <button type="submit"  class="btn btn-warning btn-block">PRZYWRÓĆ ZMIANY</button>
+                                        
+                                        </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+                                    </div>-->
+                            </div>
+                        </div><!-- Modal body end-->
 
-            <div class="col-md-2"></br>
-                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING</button>
-                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING ELSE</button>
-                <button type="submit"  class="btn btn-warning btn-block">PRZYWRÓĆ ZMIANY</button>
-                
-                </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> ZAPISZ ZMIANY</button>
+                        <button type="button" class="btn btn-warning" ng-click="clearEdit()" >Clear</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                    </div><!-- Modal footer end-->
+                </form>
             </div>
-
-        </div>
+        </div><!-- Modal content end-->
     </div>
 </div>

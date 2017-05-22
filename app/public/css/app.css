@@ -47,6 +47,9 @@ ol, ul {
 .glyph-icon-custom-edit {
     color:#00b700;
 }
+.glyph-icon-custom-warning {
+    color:#f91616;
+}
 .btn-custom {
     background-color: #33b5e5;
     color:white;
@@ -116,6 +119,10 @@ a{
 .myscroll {
     overflow:auto;
     height:700px;
+}
+.myscrollsmall {
+    overflow:auto;
+    height:300px;
 }
 
 .z3 {

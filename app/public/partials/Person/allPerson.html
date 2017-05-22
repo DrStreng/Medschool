@@ -3,11 +3,8 @@
 <div class="container-fluid">
 
     <div class="row ">
-
       <div ng-include src="'partials/Menu/search.html'"></div>
-
       <div class="col-md-2 navbar-right select-action">
-
           <div class="btn-group">
             <button type="button" class="btn btn-custom"><span class="glyphicon glyphicon-pad2 glyphicon-cog" aria-hidden="true"></span>Wybierz akcję</button>
             <button type="button"  class="btn dropdown-toggle btn-custom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,7 +110,7 @@
       <thead>
           <tr ng-style=" {'background-color': '#36363a','color':'white'}">
             <th style="width: 10px">#</th>
-            <th style="width: 30px"></th>
+            <th style="width: 10px"></th>
             <th ng-click="sortType = 'imie'; sortReverse = !sortReverse">Imię    
                     <span ng-show="sortType != 'imie'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
                     <span ng-show="sortType == 'imie' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
@@ -144,12 +141,13 @@
                     <span ng-show="sortType == 'szkola.nazwa' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
                     <span ng-show="sortType == 'szkola.nazwa' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> 
             </th>
+            
             <th class="tab-actions">Akcje</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="a in studentslist | orderBy:sortType:sortReverse | filter:search  |  filter:searchText ">
-            <td>{{$index}}</td>
+            <td>{{$index+1}}</td>
             <td>  
               <div class="check">
                   <input id="check{{$index}}" type="checkbox"/>
@@ -164,14 +162,22 @@
             <td>{{a.data_ur | date:'yyyy-MM-dd'}}</td>
             <td>{{a.nr_klasy.nazwa}}</td>
             <td>{{a.szkola.nazwa}}</td>
+            
             <td class="tab-actions">
-                <a href="{{link(a)}}" ><span class="glyphicon glyphicon-user glyph-icon-custom glyph-icon-custom-details"  aria-hidden="true"></span></a>
-                <a href="{{link_edit(a)}}" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
+                <a href="{{link(a)}}" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details"  aria-hidden="true"></span></a>
+                <a href="" ng-if="a.hc.isMine === false"><span class="glyphicon glyphicon-fire glyph-icon-custom glyph-icon-custom-warning"  aria-hidden="true"></span></a>
+                <!--<a href="" data-toggle="modal" data-target="#myModaledit" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>-->
+                <!--Modal 
+                <div ng-include src="'partials/Person/edit_Person.html'"></div>-->
+                
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+
+             
 
     
  

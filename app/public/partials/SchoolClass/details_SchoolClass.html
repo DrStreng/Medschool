@@ -1,5 +1,45 @@
 <div class="container-fluid">
     <div ng-init="getClass()">
-        <h2>Klasa: {{aaa.nazwa}}</h2>
+        <h2>SZKOŁA ???? Klasa: {{aaa.nazwa}}</h2>
+    </div>
+
+     <div class="row ">
+        <div class="col-md-10">
+            
+                <div class="myscrollsmall">
+                    <table class="table table-hover ">
+                        <thead>
+                            <tr ng-style=" {'background-color': '#36363a','color':'white'}">
+                                <th>#</th>
+                                <th>Imię</th>
+                                <th>Nazwisko</th>
+                                <th>PESEL</th>
+                                <th class="tab-actions" >Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="p in students ">
+                                <td>{{$index+1}}</td>
+                                <td>{{p.imie}}</td>
+                                <td>{{p.nazwisko}}</td>
+                                <td>{{p.pesel}}</td>
+                                <td class="tab-actions">
+                                    <a href="{{link(p)}}" ><span class="glyphicon glyphicon-user glyph-icon-custom glyph-icon-custom-details"  aria-hidden="true"></span></a>
+                                    <a href="{{link_edit(p)}}" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+            </div>
+        </div>
+
+            <div class="col-md-2 "></br>
+                <button type="submit"  class="btn btn-primary btn-block">Do SOMETHING</button>
+                <button type="submit"  class="btn btn-info btn-block">Do SOMETHING DIFRENT </button>
+                <button type="submit" ng-click="createPersonDetailsPDF(aaa)" class="btn btn-info btn-block"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> UTWÓRZ PDF </button>
+                <a href="{{link_edit2()}}"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  EDYTUJ</a>
+                </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
+            </div>
     </div>
 </div>

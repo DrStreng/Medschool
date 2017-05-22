@@ -4,9 +4,11 @@ var express = require('express'),
   bodyParser = require('body-parser');
 
 var routes = require('./routes');
+var healthCenter = require('./routes/healthCenter');
 var students = require('./routes/students');
 var schools = require('./routes/schools');
 var schoolClass = require('./routes/schoolClass');
+
 var config  = require("./routes/conf");
 
 var app = express();
@@ -24,6 +26,7 @@ app.get('/', routes.index);
 app.use('/students', students);
 app.use('/schools', schools);
 app.use('/schoolClass', schoolClass);
+app.use('/healthCenter', healthCenter);
 
 app.set('port', process.env.PORT || 3000);
 
