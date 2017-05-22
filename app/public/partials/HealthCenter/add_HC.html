@@ -31,11 +31,11 @@
                                 <input type="text" class="form-control" name="address" ng-model="form.address" placeholder="Address" >
                             </div>
                             <div class="form-group">
-                                <label for="isMine" class="control-label">isMine</label>
+                                <label for="isMine" class="control-label">Czy ośrodek przynależy do mnie?</label>
                                 <div class="check">
-                                    <input type="checkbox" class="form-control" id="isMine" name="isMine" ng-model="form.isMine" placeholder="Address" />
+                                    <input type="checkbox" class="form-control" id="isMine" name="isMine" ng-change="isMineChange()" ng-model="form.isMine" placeholder="Address" />
                                     <label for="isMine" style="justify-content: inherit;">
-                                        <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:5px;">Jest Uczniem?</div>
+                                        <div class="box"><i class="fa fa-check" ></i></div> <div style="padding:5px;">{{isMine.text}}</div>
                                     </label>
                                 </div>
                             </div>

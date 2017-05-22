@@ -33,5 +33,19 @@ router.get('/all',function(req,res){
     });
 });
 
+router.post('/edit',function(req,res){
+
+   db.findOneAndUpdate({_id:req.body._id},{$set:{
+        name      : req.body.name,
+        fullName  : req.body.fullName,
+        address   : req.body.address,
+        isMine     : req.body.isMine
+   }},function(error){
+       if(!error) res.json({"error":false});
+       else res.json({"error":true});
+   });
+
+})
+
 
 module.exports = router;

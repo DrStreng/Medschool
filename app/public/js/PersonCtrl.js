@@ -200,7 +200,6 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                     res.data.sex = "Kobieta"
                 }
                 $scope.bbb = res.data;
-                console.log($scope.bbb)
     })
     }
 
@@ -209,12 +208,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
             var id = $routeParams.id;
             $http.get('/students/get/'+id).then(function(res){
-                if(res.data.sex == "M"){
-                    res.data.sex = "Mężczyzna"
-                }
-                else if(res.data.sex == "K"){
-                    res.data.sex = "Kobieta"
-                }
+
                 $scope.aaa = res.data;
 
                 if($scope.aaa.data_ur != null){
@@ -226,6 +220,11 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 }
           
                 $scope.form = res.data;
+                
+                $scope.plec = [
+                    {sex:'K',text:'Kobieta'},
+                    {sex:'M',text:'Mężczyzna'}
+                ]
                 var send = {
                     _id: res.data.szkola._id
                 }
@@ -239,7 +238,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                     });
                 });
                 angular.forEach($scope.listHC,function(element,key){
-                    console.log(element)
+                 
                     if(element._id == $scope.form.hc._id){
                         $scope.form.hc = $scope.listHC[key]._id
                     }
@@ -278,8 +277,10 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
 
         $scope.createPersonDetailsPDF = function(a){
+           
+           if( a.nr_klasy == null ){ a.nr_klasy = { nazwa :"" } }
+           if( a.szkola == null ){ a.szkola = { nazwa :"" } }
          
-
             if(a.data_ur !== null){
                 var d = new Date(a.data_ur)
                 var dzien = d.getDate();

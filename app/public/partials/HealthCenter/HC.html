@@ -5,8 +5,10 @@
     <div ng-init="getAllHC()">
         <div class="row ">
             <div ng-include src="'partials/Menu/search.html'"></div>
-            <!-- Modal -->
+            <!-- Modal add-->
             <div ng-include src="'partials/HealthCenter/add_HC.html'"></div>
+            <!-- Modal edit-->
+            <div ng-include src="'partials/HealthCenter/edit_HC.html'"></div>
 
             <div class="col-md-2 navbar-right select-action">
                 <div class="btn-group">
@@ -79,8 +81,8 @@
                         <td>{{a.isMine}}</td>
                         
                         <td class="tab-actions">
-                        <a href=""  ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details" aria-hidden="true"></span></a>
-                        <a href="" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
+                            <a href="" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details" aria-hidden="true"></span></a>
+                            <a ng-click=getEditHC(a) data-toggle="modal" data-target="#modalEditHC" href="" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
                         </td>
                     
                     </tr>

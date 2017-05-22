@@ -33,6 +33,19 @@
                                                     <td><input type="text" class="form-control" ng-model ="form.pesel"  value="{{form.pesel}}" ></td>
                                                 </tr>
                                                 <tr>
+                                                    <th>PŁEĆ: </th>
+                                                    <td> 
+                                                        <select class = "form-control"
+                                                                ng-model="form.sex">
+                                                                <option 
+                                                                    ng-repeat="option in plec " 
+                                                                    value="{{option.sex}}"
+                                                                    >{{option.text}} 
+                                                                </option>
+                                                        </select>    
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>Szkola: </th>
                                                     <td>
                                                         <select class="form-control"  
