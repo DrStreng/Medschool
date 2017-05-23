@@ -58,6 +58,11 @@ app.config(function($routeProvider,$locationProvider){
         controller : 'HealthCenter',
     })
 
+    .when('/HealthCenter/details/:id',{
+        templateUrl:'partials/HealthCenter/details_HC.html',
+        controller : 'HealthCenter',
+    })
+
     .otherwise({redirectTo: '/'});
 
     // $locationProvider.html5Mode({

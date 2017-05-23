@@ -1,9 +1,29 @@
-app.controller('HealthCenter', function($scope,$http,$location) {
+app.controller('HealthCenter', function($scope,$http,$location,$routeParams) {
 
-    $scope.title = {
-        title : "Ośrodki Zdrowia",
-        glyph : 'grain'
-    } 
+    //Details
+
+        //NAW
+        $scope.details_HC = function(a){
+            return '#!/HealthCenter/details/'+a._id;
+        }
+
+    $scope.getHC = function(){
+        var id = $routeParams.id;
+        $http.get('/healthCenter/get/'+id).then(function(res){
+                $scope.hc = res.data;
+                    $scope.title = {
+                        title : "Ośrodek Zdrowia "+res.data.name,
+                        glyph : 'grain'
+                    }
+                    if($scope.hc.isMine =true ){
+                        $scope.isMineDetails = {text:"Tak"}
+                    } else {
+                        $scope.isMineDetails = {text:"Nie"}
+                    }
+        });
+    }
+
+    //Dodawanie
 
     var getAll =  function(){
         $http.get('/healthCenter/all').then(function(res){
@@ -12,10 +32,13 @@ app.controller('HealthCenter', function($scope,$http,$location) {
     }
 
     $scope.getAllHC = function(){
+        $scope.title = {
+            title : "Ośrodki Zdrowia",
+            glyph : 'grain'
+        } 
         getAll();
     }
 
-    //Dodawanie
     $scope.form = {
         isMine: true
     }
@@ -53,6 +76,19 @@ app.controller('HealthCenter', function($scope,$http,$location) {
             });  
         }
     }
+    //Usuń
+    $scope.removeModalHC = function(data){
+        $scope.clone = jQuery.extend({}, data);
+        
+    }
+
+    $scope.removeHC = function(){
+        console.log($scope.clone)
+        var id = { '_id': $scope.clone._id } 
+        $http.post('/healthCenter/remove',id).then(function(res){
+            getAll();
+        });
+    }
 
     //Edycja
     $scope.getEditHC = function(data){
@@ -69,7 +105,7 @@ app.controller('HealthCenter', function($scope,$http,$location) {
         $scope.form = jQuery.extend({}, $scope.clone);
     }
     $scope.editHC = function(isValid){
-
+        var id = $routeParams.id;
         if(isValid){
             $http.post('/healthCenter/edit',$scope.form).then(function(res){
                 if(res.data.error == false){       
@@ -78,7 +114,11 @@ app.controller('HealthCenter', function($scope,$http,$location) {
                     $scope.message = { text : 'Coś się nie powiodło, spróbuj ponownie', mode : 'danger'};
                 }
             });
-             getAll();
+            if(id != undefined){
+                $scope.getHC();
+            } else {
+                getAll();
+            }
         }
     }
 

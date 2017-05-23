@@ -1,0 +1,41 @@
+    
+    <div ng-init="getHC()">
+        <div class="col-md-7">
+            <h3><span class="glyphicon glyphicon-{{title.glyph}}" aria-hidden="true"></span><strong>{{title.title}}</strong></h3>
+        </div>
+        <!-- Modal edit-->
+        <div ng-include src="'partials/HealthCenter/edit_HC.html'"></div>
+
+        <div class="container-fluid">
+            
+                <div class="row">
+                    <div class="col-md-10">
+                        <table class="table details">
+                            <tr>
+                                <th>Nazwa: </th><td>{{hc.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Pełna nazwa: </th><td>{{hc.fullName}}</td>
+                            </tr>
+                            <tr>
+                                <th>Address: </th><td>{{hc.address}}</td>
+                            </tr>
+                            <tr>
+                                <th>Mój: </th><td>{{isMineDetails.text}}</td>
+                            </tr>
+
+                        </table>
+                        </br>
+                        
+                        
+                    </div>
+                    <div class="col-md-2"></br>
+                       
+                        <a ng-click=getEditHC(hc) data-toggle="modal" data-target="#modalEditHC" href="" class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  EDYTUJ</a>
+                    </div>
+                </div>
+           
+        </div>
+
+    </div>
+
