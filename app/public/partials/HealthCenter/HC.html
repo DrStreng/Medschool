@@ -1,12 +1,13 @@
 <div class="container-fluid " >
 
 
-
     <div ng-init="getAllHC()">
         <div class="row ">
             <div ng-include src="'partials/Menu/search.html'"></div>
             <!-- Modal add-->
             <div ng-include src="'partials/HealthCenter/add_HC.html'"></div>
+            <!-- Modal add-->
+            <div ng-include src="'partials/HealthCenter/remove_HC.html'"></div>
             <!-- Modal edit-->
             <div ng-include src="'partials/HealthCenter/edit_HC.html'"></div>
 
@@ -29,11 +30,7 @@
             </div>
         </div>
 
-        <div class="alert alert-{{message.mode}} alert-top" ng-if="message.text">
-            <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
-            <strong>Info!</strong> {{message.text}}
-        </div>
-            
+
         <div class="table-responsive myscrollsmall">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -81,8 +78,9 @@
                         <td>{{a.isMine}}</td>
                         
                         <td class="tab-actions">
-                            <a href="" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details" aria-hidden="true"></span></a>
+                            <a href="{{details_HC(a)}}" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details" aria-hidden="true"></span></a>
                             <a ng-click=getEditHC(a) data-toggle="modal" data-target="#modalEditHC" href="" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
+                            <a ng-click=removeModalHC(a) data-toggle="modal" data-target="#modalRemoveHC" href="" ><span class="glyphicon glyphicon-remove glyph-icon-custom glyph-icon-custom-warning"  aria-hidden="true"></span></a>
                         </td>
                     
                     </tr>

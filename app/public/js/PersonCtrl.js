@@ -209,6 +209,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             var id = $routeParams.id;
             $http.get('/students/get/'+id).then(function(res){
 
+
                 $scope.aaa = res.data;
 
                 if($scope.aaa.data_ur != null){

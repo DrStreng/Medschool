@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var db = require('../schemas/healthCenter');
+var studentDb = require('../schemas/students');
 mongoose.Promise     = global.Promise;
 
 router.post('/add',function(req,res){
@@ -23,6 +24,16 @@ router.post('/add',function(req,res){
    });
 })
 
+router.get('/get/:_id',function(req,res){
+    db.findOne({'_id':req.params._id}).exec(function(err,hc){
+        if(err){
+            throw err;
+        } else {
+            res.json(hc);
+        }
+    });
+});
+
 router.get('/all',function(req,res){
     db.find({}).exec(function(err,data){
         if(err){
@@ -32,6 +43,18 @@ router.get('/all',function(req,res){
         }
     });
 });
+
+router.post('/remove', function(req, res) {
+    db.findOne({ _id: req.body._id }).remove().exec(function(){
+
+    });
+    studentDb.update({hc:req.body._id}, {hc: null},{"multi": true},function(err,num){
+        console.log("updatet :")
+        res.json({ "error": false })
+    })
+    
+});
+
 
 router.post('/edit',function(req,res){
 
