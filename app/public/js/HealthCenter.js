@@ -122,4 +122,6 @@ app.controller('HealthCenter', function($scope,$http,$location,$routeParams) {
         }
     }
 
+
+
 })

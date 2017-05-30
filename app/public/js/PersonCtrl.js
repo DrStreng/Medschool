@@ -333,6 +333,27 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
         }
 
+        $scope.saveEditor = function(){
+            window.delta = quill.getContents();
+            $scope.text = delta;
+            var note = {
+                title: 'Ala ma kota',
+                content : delta,
+                student : '123'
+            }
+                $http.post('/note/add',note).then(function(res){
+                    console.log(res)
+                }); 
+       }
+       $scope.getEditor = function(){
+           $http.get('/note/get').then(function(res){
+                    console.log(res.data[1])
+                    
+                    quill.setContents(res.data[1].content);
+            }); 
+       }
+       
+
     
 });
 

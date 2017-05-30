@@ -105,76 +105,77 @@
 </div>
 
 
-  <div class="table-responsive myscroll">
-    <table class="table table-hover  ">
+
+ 
+    <table class="table table-fixed dark-thame">
       <thead>
-          <tr ng-style=" {'background-color': '#36363a','color':'white'}">
-            <th style="width: 10px">#</th>
-            <th style="width: 10px"></th>
-            <th ng-click="sortType = 'imie'; sortReverse = !sortReverse">Imię    
-                    <span ng-show="sortType != 'imie'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
-                    <span ng-show="sortType == 'imie' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
-                    <span ng-show="sortType == 'imie' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span>
-            </th>
-            <th ng-click="sortType = 'nazwisko'; sortReverse = !sortReverse">Nazwisko  
-                    <span ng-show="sortType != 'nazwisko'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
-                    <span ng-show="sortType == 'nazwisko' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
-                    <span ng-show="sortType == 'nazwisko' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> 
-            </th>
-            <th  ng-click="sortType = 'pesel'; sortReverse = !sortReverse">PESEL          
-                    <span ng-show="sortType != 'pesel'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
-                    <span ng-show="sortType == 'pesel' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
-                    <span ng-show="sortType == 'pesel' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> 
-            </th>
-            <th ng-click="sortType = 'data_ur'; sortReverse = !sortReverse">Data urodzenia
-                    <span ng-show="sortType != 'data_ur'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
-                    <span ng-show="sortType == 'data_ur' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
-                    <span ng-show="sortType == 'data_ur' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> 
-            </th>
-            <th ng-click="sortType = 'nr_klasy.nazwa'; sortReverse = !sortReverse">Klasa  
-              <span ng-show="sortType != 'nr_klasy.nazwa'"                       class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
-                    <span ng-show="sortType == 'nr_klasy.nazwa' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
-                    <span ng-show="sortType == 'nr_klasy.nazwa' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> 
-            </th>
-            <th ng-click="sortType = 'szkola.nazwa'; sortReverse = !sortReverse">Szkoła  
-                    <span ng-show="sortType != 'szkola.nazwa'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
-                    <span ng-show="sortType == 'szkola.nazwa' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
-                    <span ng-show="sortType == 'szkola.nazwa' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> 
-            </th>
-            
-            <th class="tab-actions">Akcje</th>
-          </tr>
-        </thead>
-        <tbody>
+            <tr>
+                <th class="col-xs-2" ng-click="sortType = 'imie'; sortReverse = !sortReverse">Imię    
+                        <span ng-show="sortType != 'imie'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'imie' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'imie' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span></th>
+                <th class="col-xs-2" ng-click="sortType = 'nazwisko'; sortReverse = !sortReverse">Nazwisko  
+                        <span ng-show="sortType != 'nazwisko'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'nazwisko' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'nazwisko' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> </th>
+                <th class="col-xs-2" ng-click="sortType = 'pesel'; sortReverse = !sortReverse">PESEL          
+                      <span ng-show="sortType != 'pesel'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                      <span ng-show="sortType == 'pesel' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                      <span ng-show="sortType == 'pesel' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> </th>
+           
+                <th class="col-xs-2" ng-click="sortType = 'data_ur'; sortReverse = !sortReverse">Data urodzenia
+                        <span ng-show="sortType != 'data_ur'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'data_ur' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'data_ur' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> </th>
+                <th class="col-xs-1" ng-click="sortType = 'nr_klasy.nazwa'; sortReverse = !sortReverse">Klasa  
+                  <span ng-show="sortType != 'nr_klasy.nazwa'"                       class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'nr_klasy.nazwa' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'nr_klasy.nazwa' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> </th>
+                <th class="col-xs-2" ng-click="sortType = 'szkola.nazwa'; sortReverse = !sortReverse">Szkoła  
+                        <span ng-show="sortType != 'szkola.nazwa'"                 class=" glyphicon glyphicon-triangle-bottom pull-right "></span>
+                        <span ng-show="sortType == 'szkola.nazwa' && !sortReverse" class=" glyphicon glyphicon-triangle-bottom pull-right "></span>     
+                        <span ng-show="sortType == 'szkola.nazwa' && sortReverse"  class=" glyphicon glyphicon-triangle-top pull-right "></span> </th>
+                <th class="col-xs-1">Akcje</th>
+            </tr>
+      </thead>
+      <tbody>
           <tr ng-repeat="a in studentslist | orderBy:sortType:sortReverse | filter:search  |  filter:searchText ">
-            <td>{{$index+1}}</td>
-            <td>  
-              <div class="check">
-                  <input id="check{{$index}}" type="checkbox"/>
-                  <label for="check{{$index}}">
-                    <div class="box"><i class="fa fa-check"></i></div>
-                  </label>
-              </div>
-            </td>
-            <td>{{a.imie}}</td>
-            <td>{{a.nazwisko}}</td>
-            <td>{{a.pesel}}</td>
-            <td>{{a.data_ur | date:'yyyy-MM-dd'}}</td>
-            <td>{{a.nr_klasy.nazwa}}</td>
-            <td>{{a.szkola.nazwa}}</td>
             
-            <td class="tab-actions">
+              <!--<td class="col col-xs-1">  
+                <div class="check">
+                    <input id="check{{$index}}" type="checkbox"/>
+                    <label for="check{{$index}}">
+                      <div class="box"><i class="fa fa-check"></i></div>
+                      &nbsp;{{$index+1}}
+                    </label>
+                </div></td>-->
+              <td class=" col-xs-2">{{a.imie}}</td>
+              <td class=" col-xs-2">{{a.nazwisko}}</td>
+              <td class=" col-xs-2">{{a.pesel}}</td>
+              <td class=" col-xs-2">{{a.data_ur | date:'yyyy-MM-dd'}}</td>
+              <td class=" col-xs-1">{{a.nr_klasy.nazwa}}</td>
+              <td class=" col-xs-2">{{a.szkola.nazwa}}</td>  
+              <td class=" col-xs-1 ">
                 <a href="{{link(a)}}" ><span class="glyphicon glyphicon-eye-open glyph-icon-custom glyph-icon-custom-details"  aria-hidden="true"></span></a>
                 <a href="" ng-if="a.hc.isMine === false"><span class="glyphicon glyphicon-fire glyph-icon-custom glyph-icon-custom-warning"  aria-hidden="true"></span></a>
                 <!--<a href="" data-toggle="modal" data-target="#myModaledit" ><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>-->
                 <!--Modal 
-                <div ng-include src="'partials/Person/edit_Person.html'"></div>-->
-                
-            </td>
+                <div ng-include src="'partials/Person/edit_Person.html'"></div>--></td>
+            
           </tr>
         </tbody>
       </table>
-    </div>
+
+
+</div>
+
+      
+
+     
+
+
+
+
 
 
              
