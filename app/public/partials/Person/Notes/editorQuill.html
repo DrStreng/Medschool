@@ -1,9 +1,6 @@
 <div id="toolbar"></div>
-<div id="editor"></div>
-<a ng-click=saveEditor() id="saveEditor" class="btn btn-primary">SAVE EDITOR</a>
-<a ng-click=getEditor() id="getEditor" class="btn btn-primary">GET EDITOR</a>
+<div id="editor" class="scroll"></div>
 
-        {{text}}
 
     <script>
             var toolbarOptions = [
@@ -26,7 +23,7 @@
 
                 ['clean'],  
                 ['image']                                      // remove formatting button
-                ];
+            ];
 
             var options = {
                 modules: {
@@ -38,3 +35,11 @@
             var quill = new Quill('#editor', options);
 
     </script>
+
+    <style>
+        .scroll {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height:650px;
+        }
+    </style>

@@ -64,7 +64,6 @@ ol, ul {
 tbody {
     height: 100px ;
     overflow: scroll;
-    
 }
 
 .table-width > tbody > tr > th {
@@ -155,13 +154,20 @@ a{
 .btn-pad {
     width:200px;
 }
-.select-action{
+.select-action {
     padding-top: 23px;
+}
+
+.cpl{
+    padding-left: 20px;
+}
+.cpt{
+    padding-top: 20px;
 }
 
 .main {
   padding-top: 0px; 
-  padding-left: 250px;
+  padding-left: 225px;
   z-index: 2; 
 }
  h3 {
@@ -244,6 +250,43 @@ a{
 
 input[type=checkbox] {
   transform: scale(1.5);
+}
+
+.note{
+    display: block !important;
+}
+.note-scroll {
+   position:fixed;
+   top:129px;
+   bottom:10px;
+   width:100%; 
+   overflow-y:auto;
+   overflow-x:hidden;
+}
+.border-bottom {
+    border-bottom: 1px #e1e4e8 solid !important;
+}
+.border-top {
+    border-top: 1px #e1e4e8 solid !important;
+}
+.note-font {
+    font-size: 14px;
+}
+.py-4 {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+}
+.note > a, .note > p{
+    width:100%;
+    text-decoration: none;
+    word-wrap:break-word;
+    max-width:100%;
+    margin: 0px;
+}
+.note > a > h3 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 0px; 
 }
 
 

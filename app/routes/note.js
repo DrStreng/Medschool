@@ -10,6 +10,7 @@ router.post('/add',function(req,res){
         _id     : mongoose.Types.ObjectId(),
         title   : req.body.title,
         content : req.body.content,
+        details : req.body.details,
         student : req.body.student
     });
 

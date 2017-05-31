@@ -1,0 +1,22 @@
+
+    <div ng-include src="'partials/Menu/search.html'"></div>
+    <div class="col-md-2 navbar-right select-action">
+        <a href="{{newNote()}}" class="btn btn-success"><span class="glyphicon glyphicon-pad2 glyphicon-save" aria-hidden="true"></span>Nowa notatka</a>
+    </div>
+
+
+<div class ="note-scroll cpl border-top">
+    
+    <div ng-init="getNotes()" >
+        <div class="row ">
+            <div class="col col-md-8 ">
+                <div ng-repeat="note in listNotes" >
+                    <li class="note py-4 border-bottom">
+                        <a href="" class="text-primary"><h3>{{note.title}}</h3></a>
+                        <p  class="text-muted note-font">{{note.details}}</p>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

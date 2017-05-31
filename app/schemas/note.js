@@ -6,6 +6,7 @@ var noteSchema = new Scheam({
     _id     : { type:String, default : null },
     title   : { type:String, default : null },
     content : { type:Object, default : null },
+    details : { type:String, default : null },
     student : { type:String, ref:'students' }
 });
 
