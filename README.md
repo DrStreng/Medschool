@@ -13,7 +13,7 @@ Dodawanie nowej osoby
 ![alt text](http://i.imgur.com/5Bzh55q.png)
 
 Dodawanie Notatek
-![alt text](http://i.imgur.com/iVvfiCE.png)
+![alt text](http://i.imgur.com/1bGtqg5.png)
 
 Wyszukiwanie uczniów względem podanych kategorii
 ![alt text](http://i.imgur.com/4R3cDOE.png)
