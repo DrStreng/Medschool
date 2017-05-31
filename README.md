@@ -7,7 +7,7 @@ System do zarządzania uczniami dla pielęgniarek szkolnych.
 Zdjęcia z prac nad projektem
 
 Lista dzieci
-![alt text](http://i.imgur.com/mpSJXpw.png)
+![alt text](http://i.imgur.com/RYYvNzC.png)
 
 Dodawanie nowej osoby
 ![alt text](http://i.imgur.com/5Bzh55q.png)
