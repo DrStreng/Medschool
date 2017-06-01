@@ -1,0 +1,33 @@
+<div ng-init="getNoteById()">
+    <form name="editNote_form" ng-submit="saveEditEditor(editNote_form.$valid)" novalidate angular-validator>
+        <div class="row" style="padding-left: 15px">
+            <div class="col-md-9">
+                <h3 style="padding-bottom: 0px;"><span class="glyphicon glyphicon-{{title.glyph}}" aria-hidden="true"></span><strong>{{note.title}}</strong></h3>
+                <p  id="details"class="text-muted note-font cpl">{{note.details}}</p> 
+            </div>
+            <div id="edit"class="col-md-2 navbar-right select-action editBtn">
+                <a href="" ng-click="startEdit()"class="btn btn-default"><span class="glyphicon glyphicon-pad2 glyphicon-pencil" aria-hidden="true"></span>Edytuj</a>
+            </div>
+            <div id="save"class="form-group col-md-3 navbar-right select-action">
+                <button type="submit" class="btn btn-primary" ng-disabled="editNote_form.$invalid">Zapisz</button>
+                <a href="" ng-click="closeEdit()" class="btn btn-warning">Zamknij</a>
+                <span  ng-click="deleteNote()" class="btn btn-danger">Delete</span>
+            </div>
+        </div>
+        <div class="container">
+                <div id="form_edit" class="row cpl">
+                    <div class="form-group col col-md-4" ng-class="{'has-error' : editNote_form.title.$invalid && !editNote_form.title.$pristine}">
+                        <label for="title" class="control-label">Tytuł</label>
+                        <input type="text" class="form-control" name="title" ng-model="form.title" placeholder="Tytuł notatki" required>
+                        <p ng-show="editNote_form.title.$invalid && !editNote_form.title.$pristine" class="help-block">Tytuł jest wymagany!</p>
+                    </div>
+
+                    <div class="form-group col col-md-8">
+                        <label for="description" class="control-label">Opis</label>
+                        <input type="text" class="form-control" name="description" ng-model="form.details" placeholder="Opis notatki" >
+                    </div>
+                </div>
+                <div class="cpl" ng-include src="'partials/Person/Notes/editorQuill.html'"></div>
+        </div>
+    </form>
+

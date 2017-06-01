@@ -132,6 +132,10 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             var id = $routeParams.id;
             return '#!/Person/edit/'+id;
         }
+        $scope.linkNotes = function(){
+            var id = $routeParams.id;
+            return '#!/Person/notes/'+id;
+        }
 
 
         //Get class when school selected
@@ -333,7 +337,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
         }
 
-    
+
 });
 
 

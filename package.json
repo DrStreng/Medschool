@@ -53,6 +53,7 @@
     "path-to-regexp": "^1.7.0",
     "proxy-addr": "^1.1.4",
     "qs": "^6.4.0",
+    "quill": "^1.2.5",
     "range-parser": "^1.2.0",
     "raw-body": "^2.2.0",
     "regexp-clone": "0.0.1",
