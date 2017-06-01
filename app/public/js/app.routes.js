@@ -25,6 +25,10 @@ app.config(function($routeProvider,$locationProvider){
         templateUrl:'partials/Person/Notes/notes.html',
         controller : 'NotesCtrl',
     })
+    .when('/Person/notes/details/:idUser/:idNote',{
+        templateUrl:'partials/Person/Notes/detailsNote.html',
+        controller : 'NotesCtrl',
+    })
     .when('/Person/notes/newNote/:id',{
         templateUrl:'partials/Person/Notes/newNote.html',
         controller : 'NotesCtrl',

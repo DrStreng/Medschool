@@ -77,8 +77,11 @@ tbody {
 .glyphicon{
     color: #0073b5;
 }
-.btn >.glyphicon{
+.btn >.glyphicon {
     color: #fff;
+}
+.editBtn >.btn >.glyphicon {
+    color: #1f1f1f;
 }
 a {
     color: inherit;
@@ -163,6 +166,25 @@ a{
 }
 .cpt{
     padding-top: 20px;
+}
+@media (min-width: 1600px){
+    .container {
+    width: 1350px;
+    }
+}
+.btn-clear {
+    width:100%;
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+
+button[disabled], html input[disabled] {
+   cursor: pointer; 
 }
 
 .main {

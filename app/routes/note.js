@@ -32,19 +32,44 @@ router.get('/get',function(req,res){
        }
     })
 });
+router.get('/getByStudent/:_id',function(req,res){
+    db.find({'student':req.params._id},function(err,data){
+          if(err){
+            console.log(err);
+       } else {
+            res.json(data); 
+       }
+    })
+});
 
-// router.get('/all',function(req,res){
+router.get('/get/:_id',function(req,res){
+    db.findOne({'_id':req.params._id},function(err,data){
+          if(err){
+            console.log(err);
+       } else {
+            res.json(data); 
+       }
+    })
+});
 
-// });
+router.post('/edit',function(req,res){
+   db.findOneAndUpdate({_id:req.body._id},{$set:{
+        title   : req.body.title,
+        content : req.body.content,
+        details : req.body.details,
+        dateEdit: new Date()
+   }},function(error){
+       if(!error) res.json({"error":false});
+       else res.json({"error":true});
+   });
+});
+router.post('/remove', function(req, res) {
+    db.findOne({ _id: req.body._id }).remove().exec(function(){
+        res.json({"error":false})
+    });
+});
 
-// router.post('/remove', function(req, res) {
 
-// });
-
-
-// router.post('/edit',function(req,res){
-
-// })
 
 
 module.exports = router;

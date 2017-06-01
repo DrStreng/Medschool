@@ -7,6 +7,8 @@ var noteSchema = new Scheam({
     title   : { type:String, default : null },
     content : { type:Object, default : null },
     details : { type:String, default : null },
+    dateCreate : { type:Date,   default:Date.now },
+    dateEdit : { type:Date,   default:Date.now },
     student : { type:String, ref:'students' }
 });
 
