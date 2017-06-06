@@ -186,6 +186,9 @@ a{
 button[disabled], html input[disabled] {
    cursor: pointer; 
 }
+.pointer {
+   cursor: pointer; 
+}
 
 .main {
   padding-top: 0px; 
