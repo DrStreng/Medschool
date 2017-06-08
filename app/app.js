@@ -9,6 +9,7 @@ var students = require('./routes/students');
 var schools = require('./routes/schools');
 var schoolClass = require('./routes/schoolClass');
 var note = require('./routes/note');
+var contacts = require('./routes/contacts');
 
 var config  = require("./routes/conf");
 
@@ -34,6 +35,7 @@ app.use('/schools', schools);
 app.use('/schoolClass', schoolClass);
 app.use('/healthCenter', healthCenter);
 app.use('/note', note);
+app.use('/contacts', contacts);
 
 app.set('port', process.env.PORT || 3000);
 

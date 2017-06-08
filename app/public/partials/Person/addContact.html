@@ -13,7 +13,7 @@
                     <div class="modal-body"> 
 
                          <!-- Testowy content -->
-                        <table>
+                        <!--<table>
                             <tr>
                                <td>Osoba</td><td>Nr kontaktowy</td><td>Akcja</td>
                             </tr>
@@ -26,14 +26,24 @@
                                 <span class="glyphicon glyphicon-edit   glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span>
                                 <span class="glyphicon glyphicon-remove glyph-icon-custom glyph-icon-custom-warning"  aria-hidden="true"></span></td> 
                             </tr>
-                        </table>
+                        </table>-->
                           
+         
+
+                        <form class="form-inline" id="addContactForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="person" placeholder="Kto?" ng-model="contact.person">
+                                <input type="number" name="contactNumber" class="form-control" placeholder="Jaki numer?" ng-model="contact.num">
+                                <span ng-click="addContact(contact)"class="btn glyphicon glyphicon-plus  glyph-icon-custom glyph-icon-custom-edit" aria-hidden="true"></span>
+                            </div>
+                        </form>
+                    
                     </div><!-- Modal body end-->
 
                     <!-- Modal footer -->
                     <div class="modal-footer">  
                 
-                        <button type="button" class="btn btn-success" data-dismiss="modal"><span class=" glyphicon  glyphicon-pad2 glyphicon-save" aria-hidden="true"></span>Nowy Kontakt</button>
+                        <button type="button" class="btn btn-success" id="showFormAddingContact"><span class=" glyphicon  glyphicon-pad2 glyphicon-save" aria-hidden="true"></span>Nowy Kontakt</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
                           
                     </div><!-- Modal footer end-->

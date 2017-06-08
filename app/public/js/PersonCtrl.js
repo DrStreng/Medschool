@@ -74,6 +74,23 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 N : true
             };
         }
+        $scope.addContact = function(data){
+            var id = $routeParams.id;
+            var send = {
+                    person:data.person,
+                    num:data.num
+                }
+            $http.post('/contacts/add',send).then(function(res){
+                var id = $routeParams.id;
+                var update = {
+                    user:id,
+                    contact:res.data._id
+                }
+                $http.post('/students/addContact',update).then(function(res){
+                    
+                });
+            });
+        }
 
         $scope.clearSearch2 = function(){
             $scope.searchText = "";

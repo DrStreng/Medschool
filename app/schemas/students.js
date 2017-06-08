@@ -15,7 +15,8 @@ var studentSchema = new Scheam({
     szkola  : { type: String, default : null, ref: 'school'},
     details : { type: String, default : null},
     isStudent : { type:Boolean, default : true },
-    hc      : { type: String, default : null, ref: 'healthCenter'}
+    hc      : { type: String, default : null, ref: 'healthCenter'},
+    contact : [{  type: String, default : null,ref:'contacts'}]
     
 });
 

@@ -80,5 +80,20 @@ router.post('/edit',function(req,res){
 
 })
 
+router.post('/addContact',function(req,res){
+
+   studentDb.findOneAndUpdate({"_id":req.body.user},{$push:{
+        "contact" : req.body.contact,
+   }}).exec(function(error){
+       if(error) {
+           res.json({"error":error});
+        } else {
+           res.json({"error":false});
+        }
+   });
+})
+
+
+
 
 module.exports = router;
