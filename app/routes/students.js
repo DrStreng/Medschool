@@ -36,6 +36,16 @@ router.get('/get/:_id',function(req,res){
     });
 });
 
+router.post('/getContacts',function(req,res){
+    studentDb.findOne({'_id':req.body._id}).deepPopulate('contact').exec(function(err,data){
+        if(err){
+            res.json({"error":true})
+        } else {
+            res.json(data.contact)
+        }
+    })
+})
+
 router.post('/add',function(req,res){
 
     var student = new studentDb({
@@ -92,6 +102,7 @@ router.post('/addContact',function(req,res){
         }
    });
 })
+
 
 
 

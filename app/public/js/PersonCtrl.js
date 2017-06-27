@@ -6,8 +6,11 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             glyph : 'user'
         } 
         
+        $scope.contact = {}
+
         $scope.search = {};
         $scope.searchText = "";
+        $scope.maxlengthContactNum = 9;
 
         $scope.message = {
             text : '',
@@ -74,22 +77,26 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 N : true
             };
         }
-        $scope.addContact = function(data){
-            var id = $routeParams.id;
-            var send = {
-                    person:data.person,
-                    num:data.num
+        $scope.addContact = function(form){
+            
+                var dodaj = function(){
+                    var id = $routeParams.id;
+                    var send = {
+                            person:$scope.contact.person,
+                            num:$scope.contact.number,
+                            show:$scope.contact.show
+                        }
+                    $http.post('/contacts/add',send).then(function(res){
+                        var id = $routeParams.id;
+                        var update = {user:id, contact:res.data._id}
+                        $http.post('/students/addContact',update).then(function(res){
+                            $scope.contact = {}
+                           //setPrestine robi mnie w ****
+                        });
+                    });
                 }
-            $http.post('/contacts/add',send).then(function(res){
-                var id = $routeParams.id;
-                var update = {
-                    user:id,
-                    contact:res.data._id
-                }
-                $http.post('/students/addContact',update).then(function(res){
-                    
-                });
-            });
+
+                dodaj();
         }
 
         $scope.clearSearch2 = function(){
@@ -136,7 +143,15 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 $scope.listHC = res.data;
             });
         }
-
+        var getContacts = function(){
+            var send= {
+                _id:$routeParams.id
+            }
+            $http.post('/students/getContacts',send).then(function(res){
+                $scope.contactList = res.data;
+            })
+        }
+        
         referesh();
 
         $scope.link = function(a){ 
@@ -222,6 +237,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 }
                 $scope.bbb = res.data;
     })
+        getContacts();
     }
 
 

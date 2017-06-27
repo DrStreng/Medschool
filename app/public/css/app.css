@@ -167,10 +167,19 @@ a{
 .cpt{
     padding-top: 20px;
 }
+.p5{
+    padding: 5px!important;
+}
+.m10{
+    margin: 10px!important;
+}
 @media (min-width: 1600px){
     .container {
     width: 1350px;
     }
+}
+.form-controlRH{
+    height: auto!important;
 }
 .btn-clear {
     width:100%;
@@ -214,6 +223,7 @@ button[disabled], html input[disabled] {
     overflow-x: hidden;
     height:800px;
 }
+
 .myscrollsmall {
     overflow:auto;
     height:300px;

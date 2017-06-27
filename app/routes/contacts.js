@@ -10,6 +10,7 @@ router.post('/add',function(req,res){
         _id     : mongoose.Types.ObjectId(),
         person   : req.body.person,
         num : req.body.num,
+        show: req.body.show
     });
 
    newContact.save(function(err,data){
