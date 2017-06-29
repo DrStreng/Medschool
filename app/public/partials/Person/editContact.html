@@ -1,0 +1,48 @@
+<div id="modaleditContact" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <form  name="editContactForm" id="editContactForm" ng-submit="editContact(editContactForm)" novalidate angular-validator>
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Edytuj Kontakt</h4>
+                    </div><!-- Modal header end-->
+
+                    <!-- Modal body -->
+                    <div class="modal-body"> 
+
+                        <div class="form-group" ng-class="{'has-error' : editContactForm.person.$invalid && !editContactForm.person.$pristine}">
+                            <label for="person">Osoba</label>
+                            <input type="text" class="form-control" name="person" ng-model="ec.person" placeholder="Kto?" required>
+                            <p ng-show="editContactForm.person.$invalid && !editContactForm.person.$pristine" class="help-block">Nazwa jest wymagana!</p>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error' : editContactForm.number.$invalid && !editContactForm.number.$pristine}">
+                            <label for="number">Numer Telefonu</label>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-md-2 cp-l">
+                                            <input type="number" class="form-control" name="number" ng-model="ec.prefix" placeholder="+" required ng-maxlength="2" ng-pattern="/^[0-9]*$/">           
+                                    </div>
+                                    <div class="col col-md-10 cp-r cp-l">
+                                            <input type="number" class="form-control" name="number" ng-model="ec.num" placeholder="Jaki numer?" required ng-maxlength="9" ng-pattern="/^[0-9]*$/">
+                                    </div>              
+                                </div>
+                            </div>
+                            <p ng-show="editContactForm.number.$invalid && !editContactForm.number.$pristine" class="help-block">Numer musi być poprawny!</p>
+                        </div>
+                             
+                    </div><!-- Modal body end-->
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">  
+                        <button type="submit" class="btn btn-primary" ng-disabled="editContactForm.$invalid">Edytuj</button>
+                        <a href="" class="btn btn-danger"ng-click="deleteContact(ec._id)">Usuń</a>
+                        <a href="" class="btn btn-default" data-dismiss="modal">Zamknij</a>
+                    </div><!-- Modal footer end-->
+
+            </div><!-- Modal content end-->
+        </form>
+    </div>
+</div>

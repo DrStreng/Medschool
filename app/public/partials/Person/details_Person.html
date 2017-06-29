@@ -6,11 +6,6 @@
         <div class="row" style="margin-right: 0px; ">
             <div class="col-md-10" id="HTMLtoPDF">
 
-                <div class="alert alert-{{message.mode}} " ng-if="message.text">
-                    <a href="" class="close" arial-label="close" ng-click="clearMessage()"> &times;</a>
-                    <strong>Info!</strong> {{message.text}}
-                </div>
-
                 <table class="table table-width table-details" >
                     <tr>
                         <th>Imię: </th>
@@ -57,16 +52,24 @@
                 <button type="submit" data-toggle="modal" data-target="#myModaledit"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> EDYTUJ</button>
                 <button type="submit" ng-click="createPersonDetailsPDF(bbb)" class="btn btn-info btn-block"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> UTWÓRZ PDF </button>
                 </br></br><button type="submit"  class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> USUŃ</button>
-                </br></br><strong>KONTAKT</strong></br></br>
-                <span class="glyphicon glyphicon-phone-alt" aria-hidden="true">  123 435 234</br></br>
-                <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"> 48 123 123 123</br>
+                </br></br><h4><strong>KONTAKT <span class="pointer glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="modal" data-target="#modalAddPersonContact"></span></strong></h4></br>
+
+                <div ng-repeat="a in contactList" >
+                    <div class="p5">
+                        <label for="num" data-toggle="modal" data-target="#modaleditContact" ng-click=setContact(a)>{{a.person}}</label></br>
+                        <span class="glyphicon glyphicon-phone-alt" name="num" aria-hidden="true"/>
+                        <span data-toggle="modal" data-target="#modaleditContact" ng-click=setContact(a)>+{{a.prefix}} {{a.num}}</span>
+                    </div>
+                </div>
             </div>
 
         </div>
 
-        
-        
     </div>
             <!-- Modal -->
             <div ng-include src="'partials/Person/edit_Person.html'"></div>
+            <!-- Modal -->
+            <div ng-include src="'partials/Person/editContact.html'"></div>
+            <!-- Modal -->
+            <div ng-include src="'partials/Person/addContact.html'"></div>
 </div>

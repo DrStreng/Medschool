@@ -36,6 +36,27 @@ router.get('/get/:_id',function(req,res){
     });
 });
 
+router.post('/getContacts',function(req,res){
+    studentDb.findOne({'_id':req.body._id}).deepPopulate('contact').exec(function(err,data){
+        if(err){
+            res.json({"error":true})
+        } else {
+            res.json(data.contact)
+        }
+    })
+})
+
+router.post('/removeContact',function(req,res){
+    studentDb.findOneAndUpdate({'_id':req.body.person_id},{$pull: {contact: req.body.contact_id}}).exec(function(err,data){
+        if(err){
+            res.json({"error":true})
+        } else {
+            res.json(data); 
+        }
+    })
+
+})
+
 router.post('/add',function(req,res){
 
     var student = new studentDb({
@@ -79,6 +100,22 @@ router.post('/edit',function(req,res){
    });
 
 })
+
+router.post('/addContact',function(req,res){
+
+   studentDb.findOneAndUpdate({"_id":req.body.user},{$push:{
+        "contact" : req.body.contact,
+   }}).exec(function(error){
+       if(error) {
+           res.json({"error":error});
+        } else {
+           res.json({"error":false});
+        }
+   });
+})
+
+
+
 
 
 module.exports = router;
