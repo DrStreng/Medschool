@@ -1,78 +1,51 @@
 <div id="modalAddPersonContact" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
+<form  name="addContactForm" id="addContactForm" ng-submit="addContact(addContactForm)" novalidate angular-validator>
             <!-- Modal content-->
             <div class="modal-content">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Add Contact</h4>
-
+                        <h4 class="modal-title"><span class="glyphicon glyphicon-pad glyphicon-search" aria-hidden="true"></span>Dodaj nowy kontakt</h4>
                     </div><!-- Modal header end-->
 
                     <!-- Modal body -->
                     <div class="modal-body"> 
 
-                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Osoba</th>
-                                <th>Numer</th>
-                                <th>Skrót</th>
-                                <th>Akcje</th>
-                            </tr>
-                        </thead>
-                                <tbody >
-                                    <tr ng-repeat="contact in contactList">
-                                        <td>{{$index+1}}</td>
-                                        <td>{{contact.person}}</td>
-                                        <td>{{contact.num}}</td>
-                                        <td><input type="checkbox" class="form-control form-controlRH" ng-model="contact.show"></td>
-                                        <td>
-                                            <a href=""><span class="glyphicon glyphicon-edit glyph-icon-custom glyph-icon-custom-edit"  aria-hidden="true"></span></a>
-                                            <a href=""><span class="glyphicon glyphicon-remove glyph-icon-custom glyph-icon-custom-warning"  aria-hidden="true"></span></a>
-                                        </td>
-                                    </tr> 
-                                </tbody>
-                    </table>
-
-
-                            
-                            
-                        <p><strong>Dodaj nowy kontakt</strong></p>
-                        <form class="form-inline" name="addContactForm" id="addContactForm" ng-submit="addContact(addContactForm)" novalidate angular-validator>
-
-
-                                <div class="form-group" ng-class="{'has-error' : addContactForm.person.$invalid && !addContactForm.person.$pristine}">
-                                    <input type="text" class="form-control" name="person" ng-model="contact.person" placeholder="Kto?" required>
-                                    
-                                </div>
-                                <div class="form-group" ng-class="{'has-error' : addContactForm.number.$invalid && !addContactForm.number.$pristine}">
-                                    <input type="number" class="form-control" name="number" ng-model="contact.number" placeholder="Jaki numer?" required ng-maxlength="9">
-                                    
-                                </div>
-                                <div class="form-group" >
-                                    <label class="" for="show">Pokarz?</label><input type="checkbox" name="show" class="m10 form-control form-controlRH" ng-model="contact.show">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" ng-disabled="addContactForm.$invalid">Dodaj</button>
-                                </div>
+                            <div class="form-group" ng-class="{'has-error' : addContactForm.person.$invalid && !addContactForm.person.$pristine}">
+                                <label for="person">Osoba</label>
+                                <input type="text" class="form-control" name="person" ng-model="contact.person" placeholder="Kto?" required>
                                 <p ng-show="addContactForm.person.$invalid && !addContactForm.person.$pristine" class="help-block">Nazwa jest wymagana!</p>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error' : addContactForm.number.$invalid && !addContactForm.number.$pristine}">
+                                <label for="number">Numer Telefonu</label>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col col-md-2 cp-l">
+                                            <input type="number" class="form-control" name="number" ng-model="contact.prefix" placeholder="+" required ng-maxlength="2" ng-pattern="/^[0-9]*$/">           
+                                        </div>
+                                        <div class="col col-md-10 cp-r cp-l">
+                                            <input type="number" class="form-control" name="number" ng-model="contact.number" placeholder="Jaki numer?" required ng-maxlength="9">
+                                        </div>              
+                                    </div>
+                                </div>
                                 <p ng-show="addContactForm.number.$invalid && !addContactForm.number.$pristine" class="help-block">Numer musi być poprawny!</p>
-                           
-                        </form>
-                    
+
+
+                            </div>
+                            
                     </div><!-- Modal body end-->
 
                     <!-- Modal footer -->
                     <div class="modal-footer">  
-                
+                        <button type="submit" class="btn btn-primary" ng-disabled="addContactForm.$invalid">Dodaj</button>
                         <!--<button type="button" class="btn btn-success" id="showFormAddingContact"><span class=" glyphicon  glyphicon-pad2 glyphicon-save" aria-hidden="true"></span>Nowy Kontakt</button>-->
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        <a href="" class="btn btn-default" data-dismiss="modal">Zamknij</a>
                           
                     </div><!-- Modal footer end-->
 
             </div><!-- Modal content end-->
+            </form>
     </div>
 </div>

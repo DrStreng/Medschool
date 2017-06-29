@@ -46,6 +46,17 @@ router.post('/getContacts',function(req,res){
     })
 })
 
+router.post('/removeContact',function(req,res){
+    studentDb.findOneAndUpdate({'_id':req.body.person_id},{$pull: {contact: req.body.contact_id}}).exec(function(err,data){
+        if(err){
+            res.json({"error":true})
+        } else {
+            res.json(data); 
+        }
+    })
+
+})
+
 router.post('/add',function(req,res){
 
     var student = new studentDb({

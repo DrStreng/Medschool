@@ -210,6 +210,12 @@ button[disabled], html input[disabled] {
  h3 > .glyphicon {
      padding: 0px 15px 0px 0px;
  }
+ .cp-r{
+     padding-right:0px!important; 
+ }
+.cp-l{
+     padding-left:0px!important; 
+ }
 
 .menu {
   padding-top:0px;  

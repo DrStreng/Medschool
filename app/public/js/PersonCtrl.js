@@ -29,6 +29,15 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             N : true
         };
 
+        var getContacts = function(){
+            var send= {
+                _id:$routeParams.id
+            }
+            $http.post('/students/getContacts',send).then(function(res){
+                $scope.contactList = res.data;
+            })
+        }
+
         $scope.change = function(sex){
             
             if($scope.searchSex.M === true && $scope.searchSex.K === true){
@@ -84,19 +93,41 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                     var send = {
                             person:$scope.contact.person,
                             num:$scope.contact.number,
-                            show:$scope.contact.show
-                        }
+                            prefix:$scope.contact.prefix
+                    }
                     $http.post('/contacts/add',send).then(function(res){
                         var id = $routeParams.id;
                         var update = {user:id, contact:res.data._id}
                         $http.post('/students/addContact',update).then(function(res){
                             $scope.contact = {}
-                           //setPrestine robi mnie w ****
+                           //setPrestine naprawic
+                           getContacts();
                         });
                     });
                 }
-
                 dodaj();
+                
+        }
+        $scope.setContact = function(contact){
+            $scope.ec = jQuery.extend({}, contact);
+        }
+        $scope.editContact = function(isValid){
+            if(isValid){
+                $http.post('/contacts/edit',$scope.ec).then(function(res){
+                    getContacts();
+                })
+            }
+        }
+
+        $scope.deleteContact = function(data){
+            var send  = {
+                person_id: $routeParams.id,
+                contact_id: data
+            }
+            $http.post('/students/removeContact',send).then(function(res){});
+            $http.post('/contacts/remove',send).then(function(res){
+                getContacts();
+            });
         }
 
         $scope.clearSearch2 = function(){
@@ -114,8 +145,6 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
             }
         }
 
-
-            
         var referesh = function(){
             $http.get('/students/all').then(function(res){
                     $scope.studentsAll = res.data;
@@ -143,14 +172,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
                 $scope.listHC = res.data;
             });
         }
-        var getContacts = function(){
-            var send= {
-                _id:$routeParams.id
-            }
-            $http.post('/students/getContacts',send).then(function(res){
-                $scope.contactList = res.data;
-            })
-        }
+
         
         referesh();
 
@@ -178,7 +200,7 @@ app.controller('PersonCtrl', function($scope,$http,$routeParams) {
 
             $http.post('/schools/getBySchoolId',send).then(function(res){
                 $scope.schoolClass = res.data.klasa;
-                 $scope.person={
+                 $scope.person= {
                     "imie":$scope.person.imie,
                     "nazwisko":$scope.person.nazwisko,
                     "data_ur":$scope.person.data_ur,

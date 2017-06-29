@@ -49,7 +49,6 @@ router.post('/remove', function(req, res) {
 
     });
     studentDb.update({hc:req.body._id}, {hc: null},{"multi": true},function(err,num){
-        console.log("updatet :")
         res.json({ "error": false })
     })
     
