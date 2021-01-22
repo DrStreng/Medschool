@@ -16,7 +16,7 @@ Wyszukiwanie uczniów względem podanych kategorii
 ![alt text](http://i.imgur.com/4R3cDOE.png)
 
 Panel edycji danego ucznia
-![alt text](https://imgur.com/zKcT3Bw)
+![alt text](https://i.imgur.com/zKcT3Bw.png)
 
 Ładowanie do aplikacji
 ![alt text](http://i.imgur.com/xXlJgMX.png)
